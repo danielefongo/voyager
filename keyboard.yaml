@@ -1,26 +1,8 @@
 layout: {qmk_keyboard: zsa/voyager, layout_name: LAYOUT}
 layers:
   L0:
-  - - {t: ▽, type: trans}
-    - '1'
-    - '2'
-    - '3'
-    - '4'
-    - '5'
-    - '6'
-    - '7'
-    - '8'
-    - '9'
-  - - '0'
-    - {t: ▽, type: trans}
-    - TAB
-    - Q
-    - W
-    - F
-    - P
-    - B
-    - J
-    - L
+  - ['  ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  - ['0', '  ', TAB, Q, W, F, P, B, J, L]
   - - U
     - Y
     - ;
@@ -54,26 +36,8 @@ layers:
   - - BSPC
     - {t: SPC, h: L2}
   L1:
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - '%'
-    - '1'
-    - '2'
-    - '3'
-    - '4'
-    - '5'
-    - '6'
-    - '7'
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '%', '1', '2', '3', '4', '5', '6', '7']
   - ['8', '9', '0', \, '=', '|', '-', '{', '}', '?']
   - ['!', (, ), /, '&', '"', '@', '#', +, '[']
   - - ']'
@@ -84,166 +48,39 @@ layers:
     - '*'
     - ^
     - $
-    - {type: held}
-    - {t: ▽, type: trans}
+    - {t: '  ', type: held}
+    - '  '
   - - BSPC
     - {t: SPC, h: L3}
   L2:
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - '1'
-    - '2'
-  - - '3'
-    - '4'
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - LSFT
-    - LCTL
-    - LALT
-    - LGUI
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - LEFT
-    - DOWN
-    - UP
-    - RIGHT
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - ','
-    - .
-    - /
-    - _
-    - L3
-    - LSFT
-  - - {t: ▽, type: trans}
-    - {type: held}
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '1', '2']
+  - ['3', '4', '  ', '  ', LSFT, LCTL, LALT, LGUI, '  ', '  ']
+  - [LEFT, DOWN, UP, RIGHT, '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', ',', ., /, _, L3, LSFT]
+  - - '  '
+    - {t: '  ', type: held}
   L3:
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - RM TOGG
-    - VOLD
-    - VOLU
-    - MUTE
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - LSFT
-    - MPRV
-    - MNXT
-    - MSTP
-    - MPLY
-    - {t: ▽, type: trans}
-  - - HOME
-    - PGDN
-    - PGUP
-    - END
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', RM TOGG, VOLD, VOLU, MUTE, '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', LSFT, MPRV, MNXT, MSTP, MPLY, '  ']
+  - [HOME, PGDN, PGUP, END, '  ', '  ', '  ', '  ', '  ', '  ']
+  - - '  '
+    - '  '
+    - '  '
     - Ctl+TAB
     - Ctl+Sft+TAB
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {type: held}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {type: held}
+    - '  '
+    - '  '
+    - '  '
+    - {t: '  ', type: held}
+    - '  '
+  - - '  '
+    - {t: '  ', type: held}
   L4:
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
+  - ['  ', '  ']
