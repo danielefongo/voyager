@@ -38,7 +38,22 @@
               nixpkgs-fmt
               qmk
               just
+
+              python3
+              python3Packages.pip
             ];
+
+            shellHook = ''
+              if [ ! -d .venv ]; then
+                python3 -m venv .venv
+              fi
+
+              source .venv/bin/activate
+
+              if ! pip list | grep -q "keymap-drawer"; then
+                pip install keymap-drawer
+              fi
+            '';
           };
         }
       );
