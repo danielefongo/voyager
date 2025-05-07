@@ -3,46 +3,38 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
-      KC_ESC         , KC_1        , KC_2 , KC_3 , KC_4          , KC_5          ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0            , KC_MINS        ,
-      CW_TOGG        , KC_Q        , KC_W , KC_E , KC_R          , KC_T          ,     KC_Y           , KC_U          , KC_I     , KC_O   , KC_P            , KC_BSLS        ,
-      SFT_T(KC_BSPC) , KC_A        , KC_S , KC_D , KC_F          , KC_G          ,     KC_H           , KC_J          , KC_K     , KC_L   , KC_SCLN         , RSFT_T(KC_QUOT),
-      KC_LGUI        , ALT_T(KC_Z) , KC_X , KC_C , KC_V          , KC_B          ,     KC_N           , KC_M          , KC_COMMA , KC_DOT , RALT_T(KC_SLSH) , KC_RCTL        ,
-                                                   LT(1, KC_ENT) , CTL_T(KC_TAB) ,     SFT_T(KC_BSPC) , LT(2, KC_SPC)
+      _______        , KC_1         , KC_2         , KC_3         , KC_4          , KC_5           ,     KC_6    , KC_7          , KC_8         , KC_9         , KC_0         , _______        ,
+      KC_TAB         , KC_Q         , KC_W         , KC_F         , KC_P          , KC_B           ,     KC_J    , KC_L          , KC_U         , KC_Y         , KC_SEMICOLON , S(KC_QUOT)     ,
+      LSFT_T(KC_EQL) , LCTL_T(KC_A) , LALT_T(KC_R) , LGUI_T(KC_S) , KC_T          , KC_G           ,     KC_M    , KC_N          , RGUI_T(KC_E) , RALT_T(KC_I) , RCTL_T(KC_O) , RSFT_T(KC_QUOT),
+      KC_COLN        , KC_Z         , KC_X         , KC_C         , KC_D          , KC_V           ,     KC_K    , KC_H          , KC_COMMA     , KC_DOT       , KC_SLSH      , KC_UNDS        ,
+                                                                    LT(1, KC_ENT) , LSFT_T(KC_ESC) ,     KC_BSPC , LT(2, KC_SPC)
 ),
 
 [1] = LAYOUT(
-      KC_ESC  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   ,     KC_F6   , KC_F7 , KC_F8 , KC_F9   , KC_F10  , KC_F11 ,
-      KC_GRV  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC ,     KC_7    , KC_8  , KC_9  , KC_MINS , KC_SLSH , KC_F12 ,
-      _______ , KC_CIRC , KC_AMPR , KC_ASTR , KC_LPRN , KC_RPRN ,     KC_4    , KC_5  , KC_6  , KC_PLUS , KC_ASTR , KC_BSPC,
-      _______ , _______ , KC_LBRC , KC_RBRC , KC_LCBR , KC_RCBR ,     KC_1    , KC_2  , KC_3  , KC_DOT  , KC_EQL  , KC_ENT ,
-                                              _______ , _______ ,     _______ , KC_0
+      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______       , _______ , _______  , _______ , _______     ,
+      KC_PERC , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,     KC_6    , KC_7          , KC_8    , KC_9     , KC_0    , KC_BACKSLASH,
+      KC_EQL  , KC_PIPE , KC_MINS , KC_LCBR , KC_RCBR , KC_QUES ,     KC_EXLM , KC_LPRN       , KC_RPRN , KC_SLASH , KC_AMPR , KC_DQUO     ,
+      KC_AT   , KC_HASH , KC_PLUS , KC_LBRC , KC_RBRC , KC_GRV  ,     KC_TILD , KC_LABK       , KC_RABK , KC_ASTR  , KC_CIRC , KC_DOLLAR   ,
+                                              _______ , _______ ,     KC_BSPC , LT(3, KC_SPC)
 ),
 
 [2] = LAYOUT(
-      RM_TOGG , QK_KB   , RM_NEXT , RGB_M_P , RM_VALD , RM_VALU ,     _______ , _______      , _______   , _______ , _______ , QK_BOOT,
-      _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , _______ ,     KC_PGUP , KC_HOME      , KC_UP     , KC_END  , _______ , _______,
-      _______ , KC_MPRV , KC_MNXT , KC_MSTP , KC_MPLY , _______ ,     KC_PGDN , KC_LEFT      , KC_DOWN   , KC_RGHT , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , C(S(KC_TAB)) , C(KC_TAB) , _______ , _______ , _______,
-                                              _______ , _______ ,     _______ , _______
+      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______  , _______  , _______  , _______,
+      _______ , _______ , _______ , _______ , _______ , _______ ,     KC_1    , KC_2    , KC_3     , KC_4     , _______  , _______,
+      KC_LSFT , KC_LCTL , KC_LALT , KC_LGUI , _______ , _______ ,     KC_LEFT , KC_DOWN , KC_UP    , KC_RIGHT , _______  , _______,
+      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , KC_COMMA , KC_DOT   , KC_SLASH , KC_UNDS,
+                                              MO(3)   , KC_LSFT ,     _______ , _______
 ),
 
 [3] = LAYOUT(
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
+      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______   , _______      , _______ , _______ , _______,
+      _______ , RM_TOGG , KC_VOLD , KC_VOLU , KC_MUTE , _______ ,     _______ , _______   , _______      , _______ , _______ , _______,
+      KC_LSFT , KC_MPRV , KC_MNXT , KC_MSTP , KC_MPLY , _______ ,     KC_HOME , KC_PGDN   , KC_PGUP      , KC_END  , _______ , _______,
+      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , C(KC_TAB) , C(S(KC_TAB)) , _______ , _______ , _______,
                                               _______ , _______ ,     _______ , _______
 ),
 
 [4] = LAYOUT(
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
-                                              _______ , _______ ,     _______ , _______
-),
-
-[5] = LAYOUT(
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______,
