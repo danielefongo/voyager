@@ -7,3 +7,4 @@ qmk config user.overlay_dir="$SCRIPT_DIR"
 qmk config compile.keyboard=zsa/voyager
 qmk config compile.keymap=mine
 qmk generate-compilation-database -kb zsa/voyager -km mine
+qmk compile
