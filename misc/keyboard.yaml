@@ -7,19 +7,19 @@ layers:
     - Y
     - ;
     - Sft+'
-    - {t: '=', h: LSFT}
-    - {t: A, h: LCTL}
+    - ':'
+    - {t: A, h: LSFT}
     - {t: R, h: LALT}
     - {t: S, h: LGUI}
-    - T
+    - {t: T, h: LCTL}
     - G
   - - M
-    - N
+    - {t: N, h: RCTL}
     - {t: E, h: RGUI}
     - {t: I, h: RALT}
-    - {t: O, h: RCTL}
-    - {t: '''', h: RSFT}
-    - ':'
+    - {t: O, h: RSFT}
+    - ''''
+    - '='
     - Z
     - X
     - C
@@ -55,7 +55,7 @@ layers:
   L2:
   - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ']
   - ['  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '1', '2']
-  - ['3', '4', '  ', '  ', LSFT, LCTL, LALT, LGUI, '  ', '  ']
+  - ['3', '4', '  ', '  ', '  ', LSFT, LALT, LGUI, LCTL, '  ']
   - [LEFT, DOWN, UP, RIGHT, '  ', '  ', '  ', '  ', '  ', '  ']
   - ['  ', '  ', '  ', '  ', ',', ., /, _, L3, LSFT]
   - - '  '
