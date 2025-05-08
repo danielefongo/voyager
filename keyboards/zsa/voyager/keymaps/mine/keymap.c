@@ -34,14 +34,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LSFT , KC_MPRV , KC_MNXT , KC_MSTP , KC_MPLY , __ ,     KC_HOME , KC_PGDN   , KC_PGUP      , KC_END , __ , __,
       __      , __      , __      , __      , __      , __ ,     __      , C(KC_TAB) , C(S(KC_TAB)) , __     , __ , __,
                                               __      , __ ,     __      , __
-),
-
-[4] = LAYOUT(
-      __ , __ , __ , __ , __ , __ ,     __ , __ , __ , __ , __ , __,
-      __ , __ , __ , __ , __ , __ ,     __ , __ , __ , __ , __ , __,
-      __ , __ , __ , __ , __ , __ ,     __ , __ , __ , __ , __ , __,
-      __ , __ , __ , __ , __ , __ ,     __ , __ , __ , __ , __ , __,
-                          __ , __ ,     __ , __
 )
 };
 // clang-format on
