@@ -1,5 +1,14 @@
 #pragma once
 
+#define TAPPING_TERM            300
+#define QUICK_TAP_TERM          0
+#define TAPPING_TERM_PER_KEY
+
+#define RETRO_SHIFT             500
+#define AUTO_SHIFT_TIMEOUT      300
+#define NO_AUTO_SHIFT_SYMBOLS
+#define NO_AUTO_SHIFT_NUMERIC
+
 #ifdef VIA_ENABLE
 #define VIAL_KEYBOARD_UID {0xFD, 0x2F, 0x7F, 0x8A, 0x39, 0x07, 0xF7, 0xDB}
 
