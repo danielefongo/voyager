@@ -8,6 +8,9 @@
 #define NO_AUTO_SHIFT_SYMBOLS
 #define NO_AUTO_SHIFT_NUMERIC
 
+#define PERMISSIVE_HOLD
+#define CHORDAL_HOLD
+
 #ifdef VIA_ENABLE
 #define VIAL_KEYBOARD_UID {0xFD, 0x2F, 0x7F, 0x8A, 0x39, 0x07, 0xF7, 0xDB}
 
