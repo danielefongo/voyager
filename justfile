@@ -7,8 +7,11 @@ init:
 
 compile:
   qmk compile;
-  qmk c2json $PWD/keyboards/zsa/voyager/keymaps/mine/keymap.c --no-cpp | keymap parse -c 10 -q - > $PWD/keyboard.yaml;
+  qmk c2json $PWD/keyboards/zsa/voyager/keymaps/mine/keymap.c --no-cpp | keymap parse -c 10 -q - > $PWD/misc/keyboard.yaml;
+  keymap draw $PWD/misc/keyboard.yaml > $PWD/misc/keyboard.svg;
 
-svg: compile
-  keymap draw $PWD/keyboard.yaml > /tmp/keyboard.svg;
-  firefox /tmp/keyboard.svg
+flash:
+  qmk flash -kb zsa/voyager -km mine;
+
+show-svg: compile
+  firefox $PWD/misc/keyboard.svg
