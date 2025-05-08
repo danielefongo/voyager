@@ -2,6 +2,14 @@
 
 #define __ KC_NO
 
+// enum combos { C_CAPS_WORD };
+
+// const uint16_t PROGMEM caps_word[] = {KC_F, KC_P};
+
+// combo_t key_combos[] = {
+//     [C_CAPS_WORD] = COMBO(caps_word, CW_TOGG),
+// };
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
@@ -15,8 +23,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [1] = LAYOUT(
       __      , __      , __      , __      , __      , __      ,     __      , __            , __      , __       , __      , __          ,
       KC_PERC , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,     KC_6    , KC_7          , KC_8    , KC_9     , KC_0    , KC_BACKSLASH,
-      KC_EQL  , KC_PIPE , KC_MINS , KC_LCBR , KC_RCBR , KC_QUES ,     KC_EXLM , KC_LPRN       , KC_RPRN , KC_SLASH , KC_AMPR , KC_DQUO     ,
-      KC_AT   , KC_HASH , KC_PLUS , KC_LBRC , KC_RBRC , KC_GRV  ,     KC_TILD , KC_LABK       , KC_RABK , KC_ASTR  , KC_CIRC , KC_DLR      ,
+      KC_AT   , KC_PIPE , KC_MINS , KC_LCBR , KC_RCBR , KC_QUES ,     KC_EXLM , KC_LPRN       , KC_RPRN , KC_SLASH , KC_AMPR , KC_DQUO     ,
+      KC_EQL  , KC_HASH , KC_PLUS , KC_LBRC , KC_RBRC , KC_GRV  ,     KC_TILD , KC_LABK       , KC_RABK , KC_ASTR  , KC_CIRC , KC_DLR      ,
                                               __      , __      ,     KC_BSPC , LT(3, KC_SPC)
 ),
 
