@@ -2,14 +2,6 @@
 
 #define __ KC_NO
 
-// enum combos { C_CAPS_WORD };
-
-// const uint16_t PROGMEM caps_word[] = {KC_F, KC_P};
-
-// combo_t key_combos[] = {
-//     [C_CAPS_WORD] = COMBO(caps_word, CW_TOGG),
-// };
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
