@@ -8,10 +8,11 @@ init:
 compile:
   qmk compile;
   qmk c2json $PWD/keyboards/zsa/voyager/keymaps/mine/keymap.c --no-cpp | keymap -c ./misc/config.yaml parse -c 10 -q - > /tmp/keyboard.yaml;
-  keymap draw /tmp/keyboard.yaml > $PWD/misc/keyboard.svg;
+  keymap draw /tmp/keyboard.yaml > /tmp/keyboard.svg;
+  inkscape /tmp/keyboard.svg --export-type=png --export-filename=$PWD/misc/keyboard.png --export-dpi=300
 
 flash:
   qmk flash -kb zsa/voyager -km mine;
 
-show-svg: compile
-  firefox $PWD/misc/keyboard.svg
+show: compile
+  firefox $PWD/misc/keyboard.png

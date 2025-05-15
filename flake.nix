@@ -41,6 +41,8 @@
 
               python3
               python3Packages.pip
+
+              inkscape
             ];
 
             shellHook = ''
