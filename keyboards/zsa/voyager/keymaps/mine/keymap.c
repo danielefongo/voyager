@@ -6,7 +6,8 @@ enum Layer {
     MAIN,
     SYMBOLS,
     NAVIGATION,
-    EXTRA
+    EXTRA,
+    STENO
 };
 
 // clang-format off
@@ -41,6 +42,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LSFT , KC_MPRV , KC_MNXT , KC_MSTP , KC_MPLY , __ ,     KC_HOME , KC_PGDN   , KC_PGUP      , KC_END , __ , __,
       __      , __      , __      , __      , __      , __ ,     __      , C(KC_TAB) , C(S(KC_TAB)) , __     , __ , __,
                                               __      , __ ,     __      , __
+),
+
+[STENO] = LAYOUT(
+      TO(0) , STN_N1 , STN_N2 , STN_N3 , STN_N4 , STN_N5  ,     STN_N6  , STN_N7 , STN_N8 , STN_N9 , STN_NA , STN_NB,
+      __    , STN_S1 , STN_TL , STN_PL , STN_HL , STN_ST1 ,     STN_ST3 , STN_FR , STN_PR , STN_LR , STN_TR , STN_DR,
+      __    , STN_S2 , STN_KL , STN_WL , STN_RL , STN_ST2 ,     STN_ST4 , STN_RR , STN_BR , STN_GR , STN_SR , STN_ZR,
+      __    , __     , __     , __     , STN_NC , __      ,     __      , STN_NC , __     , __     , __     , __    ,
+                                         STN_A  , STN_O   ,     STN_E   , STN_U
 )
 };
 // clang-format on
