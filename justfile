@@ -11,7 +11,7 @@ compile:
   keymap draw /tmp/keyboard.yaml > /tmp/keyboard.svg;
   inkscape /tmp/keyboard.svg --export-type=png --export-filename=$PWD/misc/keyboard.png --export-dpi=300
 
-flash:
+flash: compile
   qmk flash -kb zsa/voyager -km mine;
 
 show: compile
