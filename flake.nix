@@ -55,6 +55,10 @@
               if ! pip list | grep -q "keymap-drawer"; then
                 pip install keymap-drawer
               fi
+
+              if [ -f $HOME/qmk_firmware/requirements.txt ]; then
+                pip install -r $HOME/qmk_firmware/requirements.txt
+              fi
             '';
           };
         }
