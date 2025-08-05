@@ -107,6 +107,7 @@ parse_config:
     KC_RCTL: '$$phosphor:bold/control$$'
     KC_ENT: '$$phosphor:bold/key-return$$'
     KC_BSPC: '$$phosphor:bold/backspace$$'
+    KC_DEL: '$$phosphor:bold/eraser$$'
     KC_DOWN: '$$phosphor:bold/arrow-down$$'
     KC_UP: '$$phosphor:bold/arrow-up$$'
     KC_LEFT: '$$phosphor:bold/arrow-left$$'
