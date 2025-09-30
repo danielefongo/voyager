@@ -124,6 +124,7 @@ parse_config:
     KC_PGUP: '$$phosphor:bold/caret-up$$'
     KC_END: '$$phosphor:bold/caret-line-down$$'
     KC_PGDN: '$$phosphor:bold/caret-down$$'
+    KC_PRINT_SCREEN: '$$phosphor:bold/monitor$$'
     STN_N1: '#1'
     STN_N2: '#2'
     STN_N3: '#3'
