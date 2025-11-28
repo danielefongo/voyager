@@ -68,10 +68,10 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 // clang-format off
 const char tapping_term_delays[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
   LAYOUT(
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
+  20  , 20  , 20  , 0   , 0   , 0   , 0   , 0   , 0   , 20  , 20  , 20  ,
+  20  , 20  , 20  , 0   , 0   , 0   , 0   , 0   , 0   , 20  , 20  , 20  ,
+  20  , 20  , 20  , 0   , 0   , 0   , 0   , 0   , 0   , 20  , 20  , 20  ,
+  20  , 20  , 20  , 0   , 0   , 0   , 0   , 0   , 0   , 20  , 20  , 20  ,
                           0   , 0   , 0   , 0
 );
 // clang-format on
