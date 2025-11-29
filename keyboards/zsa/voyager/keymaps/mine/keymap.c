@@ -2,6 +2,10 @@
 
 #define __ KC_NO
 
+enum custom_keycodes {
+    LED_TOG = SAFE_RANGE,
+};
+
 enum Layer {
     MAIN,
     SYMBOLS,
@@ -38,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [EXTRA] = LAYOUT(
       KC_F11  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5 ,     KC_F6           , KC_F7     , KC_F8        , KC_F9  , KC_F10 , KC_F12,
-      __      , RM_TOGG , KC_VOLD , KC_VOLU , KC_MUTE , __    ,     __              , __        , __           , __     , __     , __    ,
+      __      , LED_TOG , KC_VOLD , KC_VOLU , KC_MUTE , __    ,     __              , __        , __           , __     , __     , __    ,
       KC_LSFT , KC_MPRV , KC_MNXT , KC_MSTP , KC_MPLY , __    ,     KC_HOME         , KC_PGDN   , KC_PGUP      , KC_END , __     , __    ,
       __      , __      , __      , __      , __      , __    ,     KC_PRINT_SCREEN , C(KC_TAB) , C(S(KC_TAB)) , __     , __     , __    ,
                                               __      , __    ,     __              , __
@@ -147,4 +151,132 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     post_debug_key(keycode, record);
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LED_TOG:
+            if (record->event.pressed) {
+                keyboard_config.disable_layer_led = !keyboard_config.disable_layer_led;
+                eeconfig_update_kb(keyboard_config.raw);
+            }
+            return false;
+        default:
+            return true;
+    }
+}
+
+#define ___ 0, 0, 0
+#define YELLOW 41, 255, 255
+#define ORANGE 29, 255, 255
+#define PINK 238, 255, 255
+#define PURPLE 196, 255, 255
+#define BLUE 162, 255, 255
+#define CYAN 137, 255, 255
+#define RED 255, 255, 225
+#define GREEN 94, 255, 225
+
+#define TXT CYAN
+#define SYM PURPLE
+#define NUM PINK
+#define MOD ORANGE
+#define NAV GREEN
+#define SYS RED
+#define STN YELLOW
+
+// clang-format off
+#define LIGHTS(k0B, k0C, k0D, k0E, k0F, k0G, k6A, k6B, k6C, k6D, k6E, k6F, k1B, k1C, k1D, k1E, k1F, k1G, k7A, k7B, k7C, k7D, k7E, k7F, k2B, k2C, k2D, k2E, k2F, k2G, k8A, k8B, k8C, k8D, k8E, k8F, k3B, k3C, k3D, k3E, k3F, k4E, kAC, k9B, k9C, k9D, k9E, k9F, k5A, k5B, kBF, kBG) \
+{ \
+    {k0B}, {k0C}, {k0D}, {k0E}, {k0F}, {k0G}, \
+    {k1B}, {k1C}, {k1D}, {k1E}, {k1F}, {k1G}, \
+    {k2B}, {k2C}, {k2D}, {k2E}, {k2F}, {k2G}, \
+    {k3B}, {k3C}, {k3D}, {k3E}, {k3F}, {k4E}, \
+    {k5A}, {k5B}, \
+    {k6A}, {k6B}, {k6C}, {k6D}, {k6E}, {k6F}, \
+    {k7A}, {k7B}, {k7C}, {k7D}, {k7E}, {k7F}, \
+    {k8A}, {k8B}, {k8C}, {k8D}, {k8E}, {k8F}, \
+    {kAC}, {k9B}, {k9C}, {k9D}, {k9E}, {k9F}, \
+    {kBF}, {kBG} \
+}
+// clang-format on
+
+extern rgb_config_t rgb_matrix_config;
+
+void keyboard_post_init_user(void) {
+    rgb_matrix_enable();
+}
+
+// clang-format off
+#define LEDMAP_START const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] 
+
+LEDMAP_START = {
+  [MAIN] = LIGHTS(
+      ___, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, ___,
+      SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM,
+      SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
+      SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
+                          MOD, SYM, SYM, MOD
+  ),
+  [SYMBOLS] = LIGHTS(
+      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+      SYM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, SYM,
+      SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
+      SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
+                          ___, ___, ___, MOD
+  ),
+  [NAVIGATION] = LIGHTS(
+      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+      ___, ___, ___, ___, ___, ___, NUM, NUM, NUM, NUM, ___, ___,
+      ___, MOD, MOD, MOD, MOD, ___, NAV, NAV, NAV, NAV, ___, ___,
+      ___, ___, ___, ___, ___, ___, ___, ___, SYM, SYM, SYM, SYM,
+                          MOD, ___, ___, ___
+  ),
+  [EXTRA] = LIGHTS(
+      SYS, SYS, SYS, SYS, SYS, SYS, SYS, SYS, SYS, SYS, SYS, SYS,
+      ___, SYS, SYS, SYS, SYS, ___, ___, ___, ___, ___, ___, ___,
+      MOD, SYS, SYS, SYS, SYS, ___, NAV, NAV, NAV, NAV, ___, ___,
+      ___, ___, ___, ___, ___, ___, SYS, NAV, NAV, ___, ___, ___,
+                          ___, ___, ___, ___
+  ),
+  [STENO] = LIGHTS(
+      ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
+      ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
+      ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
+      ___, ___, ___, ___, STN, ___, ___, STN, ___, ___, ___, ___,
+                          STN, STN, STN, STN
+  )
+};
+// clang-format on
+
+RGB hsv_to_rgb_with_value(HSV hsv) {
+    RGB   rgb = hsv_to_rgb(hsv);
+    float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+    return (RGB){f * rgb.r, f * rgb.g, f * rgb.b};
+}
+
+void set_layer_color(int layer) {
+    for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+        HSV hsv = {
+            .h = pgm_read_byte(&ledmap[layer][i][0]),
+            .s = pgm_read_byte(&ledmap[layer][i][1]),
+            .v = pgm_read_byte(&ledmap[layer][i][2]),
+        };
+        if (!hsv.h && !hsv.s && !hsv.v) {
+            rgb_matrix_set_color(i, 0, 0, 0);
+        } else {
+            RGB rgb = hsv_to_rgb_with_value(hsv);
+            rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
+        }
+    }
+}
+
+bool rgb_matrix_indicators_user(void) {
+    int layer = biton32(layer_state);
+    if (!keyboard_config.disable_layer_led && layer >= MAIN && layer <= STENO) {
+        set_layer_color(layer);
+    } else {
+        rgb_matrix_set_color_all(0, 0, 0);
+    }
+
+    return true;
 }
