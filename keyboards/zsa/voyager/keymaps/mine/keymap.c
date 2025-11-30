@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "keys_debug.h"
 
 #define __ KC_NO
 
@@ -53,92 +54,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 // clang-format on
-
-// clang-format off
-const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
-  LAYOUT(
-  '*'    , '*'    , '*'    , '*'    , '*'    , '*'    , '*'    , '*'    , '*'    , '*'    , '*'    , '*'    ,
-  '*'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    , 'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
-  '*'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    , 'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
-  '*'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    , 'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
-                                      '*'    , '*'    , '*'    , '*'
-);
-// clang-format on
-
-// clang-format off
-const char tapping_term_delays[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
-  LAYOUT(
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
-                          0   , 0   , 0   , 0
-);
-// clang-format on
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    uint8_t row = record->event.key.row;
-    uint8_t col = record->event.key.col;
-
-    return TAPPING_TERM + tapping_term_delays[row][col];
-}
-
-#ifdef CONSOLE_ENABLE
-
-// clang-format off
-static const uint8_t layer_coords[] = {
-    0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x00, 0x03, 0x00, 0x04, 0x00, 0x05,
-    0xFF, 0xFF, 0x01, 0x00, 0x01, 0x01, 0x01, 0x02, 0x01, 0x03, 0x01, 0x04, 0x01, 0x05,
-    0xFF, 0xFF, 0x02, 0x00, 0x02, 0x01, 0x02, 0x02, 0x02, 0x03, 0x02, 0x04, 0x02, 0x05,
-    0xFF, 0xFF, 0x03, 0x00, 0x03, 0x01, 0x03, 0x02, 0x03, 0x03, 0x03, 0x04, 0xFF, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x03, 0x05, 0xFF, 0xFF, 0xFF, 0xFF,
-    0x04, 0x04, 0x04, 0x05, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    0x00, 0x06, 0x00, 0x07, 0x00, 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0xFF, 0xFF,
-    0x01, 0x06, 0x01, 0x07, 0x01, 0x08, 0x01, 0x09, 0x01, 0x0A, 0x01, 0x0B, 0xFF, 0xFF,
-    0x02, 0x06, 0x02, 0x07, 0x02, 0x08, 0x02, 0x09, 0x02, 0x0A, 0x02, 0x0B, 0xFF, 0xFF,
-    0xFF, 0xFF, 0x03, 0x07, 0x03, 0x08, 0x03, 0x09, 0x03, 0x0A, 0x03, 0x0B, 0xFF, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0x03, 0x06, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x04, 0x06, 0x04, 0x07
-};
-// clang-format on
-
-static inline void get_layout_coords(uint8_t row, uint8_t col, uint8_t *layout_row, uint8_t *layout_col) {
-    *layout_row = layer_coords[row * MATRIX_COLS * 2 + col * 2 + 1];
-    *layout_col = layer_coords[row * MATRIX_COLS * 2 + col * 2 + 0];
-}
-
-static uint32_t key_press_time[MATRIX_ROWS][MATRIX_COLS];
-
-void pre_debug_key(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        uint8_t row              = record->event.key.row;
-        uint8_t col              = record->event.key.col;
-        key_press_time[row][col] = timer_read32();
-    }
-}
-
-void post_debug_key(uint16_t keycode, keyrecord_t *record) {
-    if (!record->event.pressed) {
-        uint8_t row           = record->event.key.row;
-        uint8_t col           = record->event.key.col;
-        uint8_t current_layer = get_highest_layer(layer_state);
-
-        uint32_t press_duration = timer_elapsed32(key_press_time[row][col]);
-        uint8_t  layout_row, layout_col;
-        get_layout_coords(row, col, &layout_row, &layout_col);
-
-        uint16_t tapping_term = TAPPING_TERM + (int8_t)pgm_read_byte(&tapping_term_delays[row][col]);
-
-        bool hold = press_duration > tapping_term;
-
-        uprintf("{\"layer\":%u,\"x\":%u,\"y\":%u,\"duration\":%lu,\"hold\":%s,\"tapping_term\":%u}\n", current_layer,
-                layout_col, layout_row, (unsigned long)press_duration, hold ? "true" : "false", tapping_term);
-    }
-}
-#else
-void pre_debug_key(uint16_t keycode, keyrecord_t *record) {}
-void post_debug_key(uint16_t keycode, keyrecord_t *record) {}
-#endif
 
 bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
     pre_debug_key(keycode, record);
