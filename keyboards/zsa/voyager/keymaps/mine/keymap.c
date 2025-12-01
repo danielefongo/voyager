@@ -1,15 +1,9 @@
 #include QMK_KEYBOARD_H
+#include "enums.h"
+#include "leds.h"
 #include "keys_debug.h"
 
 #define __ KC_NO
-
-enum Layer {
-    MAIN,
-    SYMBOLS,
-    NAVIGATION,
-    EXTRA,
-    STENO
-};
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -39,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [EXTRA] = LAYOUT(
       __              , __      , __      , __      , __      , __ ,     __    , __    , __    , __     , __     , __    ,
-      KC_PRINT_SCREEN , RM_TOGG , KC_VOLD , KC_VOLU , KC_MUTE , __ ,     KC_F1 , KC_F2 , KC_F3 , KC_F4  , KC_F5  , KC_F6 ,
+      KC_PRINT_SCREEN , LED_TOG , KC_VOLD , KC_VOLU , KC_MUTE , __ ,     KC_F1 , KC_F2 , KC_F3 , KC_F4  , KC_F5  , KC_F6 ,
       KC_LSFT         , KC_MPRV , KC_MNXT , KC_MSTP , KC_MPLY , __ ,     KC_F7 , KC_F8 , KC_F9 , KC_F10 , KC_F11 , KC_F12,
       __              , __      , __      , __      , __      , __ ,     __    , __    , __    , __     , __     , __    ,
                                                       __      , __ ,     __    , __
@@ -55,9 +49,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+void keyboard_post_init_user(void) {
+    enable_leds();
+}
+
 bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
     pre_debug_key(keycode, record);
     return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LED_TOG:
+            if (record->event.pressed) {
+                toggle_leds();
+            }
+            return false;
+        default:
+            return true;
+    }
 }
 
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {

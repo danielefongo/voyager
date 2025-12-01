@@ -112,7 +112,7 @@ parse_config:
     KC_UP: '$$phosphor:bold/arrow-up$$'
     KC_LEFT: '$$phosphor:bold/arrow-left$$'
     KC_RIGHT: '$$phosphor:bold/arrow-right$$'
-    RM_TOGG: '$$phosphor:bold/lightbulb$$'
+    LED_TOG: '$$phosphor:bold/lightbulb$$'
     KC_VOLD: '$$phosphor:bold/speaker-low$$'
     KC_VOLU: '$$phosphor:bold/speaker-high$$'
     KC_MUTE: '$$phosphor:bold/speaker-slash$$'

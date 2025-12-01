@@ -7,4 +7,5 @@ CONSOLE_ENABLE = yes
 
 SRC += keyboards/zsa/voyager/keymaps/mine/chordal.c
 SRC += keyboards/zsa/voyager/keymaps/mine/keys_debug.c
+SRC += keyboards/zsa/voyager/keymaps/mine/leds.c
 SRC += keyboards/zsa/voyager/keymaps/mine/tapping.c
