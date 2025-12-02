@@ -17,25 +17,25 @@ void enable_leds(void) {
 
 LEDMAP_START = {
   [MAIN] = LEDS(
+      MOV, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, ___,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
-      MOV, ___, ___, ___, MOV, MOD, SYM, MOV, ___, ___, ___, ___,
-                          ___, ___, ___, ___
+                          MOV, MOD, SYM, MOV
   ),
   [SYMBOLS] = LEDS(
+      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       SYM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, SYM,
       SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
       SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
-      ___, ___, ___, ___, ___, ___, SYM, MOV, ___, ___, ___, ___,
-                          ___, ___, ___, ___
+                          ___, ___, SYM, MOV
   ),
   [NAVIGATION] = LEDS(
+      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       ___, ___, ___, ___, ___, ___, NUM, NUM, NUM, NUM, NUM, ___,
       ___, MOD, MOD, MOD, MOD, ___, NAV, NAV, NAV, NAV, NAV, ___,
       ___, ___, ___, ___, ___, ___, NAV, NAV, NAV, NAV, NAV, ___,
-      ___, ___, ___, ___, MOV, ___, ___, ___, ___, ___, ___, ___,
-                          ___, ___, ___, ___
+                          MOV, ___, ___, ___
   ),
   [EXTRA] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
@@ -45,10 +45,10 @@ LEDMAP_START = {
                           ___, ___, ___, ___
   ),
   [STENO] = LEDS(
+      MOV, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
       ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
       ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
-      ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
-      MOV, ___, ___, ___, STN, ___, ___, STN, ___, ___, ___, ___,
+      ___, ___, ___, ___, STN, ___, ___, STN, ___, ___, ___, ___,
                           ___, ___, ___, ___
   )
 };
