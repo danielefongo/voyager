@@ -8,19 +8,19 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MAIN] = LAYOUT(
-      TO(4)   , KC_1   , KC_2   , KC_3   , KC_4          , KC_5           ,     KC_6    , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
-      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B           ,     KC_J    , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
-      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G           ,     KC_M    , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
-      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V           ,     KC_K    , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
-                                           LT(1, KC_ENT) , LSFT_T(KC_ESC) ,     KC_BSPC , LT(2, KC_SPC)
+      TO(4)   , KC_1   , KC_2   , KC_3   , KC_4          , KC_5   ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
+      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B   ,     KC_J           , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
+      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G   ,     KC_M           , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
+      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V   ,     KC_K           , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
+                                           LT(1, KC_ENT) , KC_ESC ,     LT(3, KC_BSPC) , LT(2, KC_SPC)
 ),
 
 [SYMBOLS] = LAYOUT(
-      __      , __      , __      , __      , __      , __      ,     __      , __            , __      , __       , __      , __          ,
-      KC_PERC , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,     KC_6    , KC_7          , KC_8    , KC_9     , KC_0    , KC_DQUO     ,
-      KC_AT   , KC_PIPE , KC_MINS , KC_LCBR , KC_RCBR , KC_QUES ,     KC_EXLM , KC_LPRN       , KC_RPRN , KC_SLASH , KC_AMPR , KC_BACKSLASH,
-      KC_EQL  , KC_HASH , KC_PLUS , KC_LBRC , KC_RBRC , KC_GRV  ,     KC_TILD , KC_LABK       , KC_RABK , KC_ASTR  , KC_CIRC , KC_DLR      ,
-                                              __      , __      ,     KC_DEL  , LT(3, KC_SPC)
+      __      , __      , __      , __      , __      , __      ,     __      , __      , __      , __       , __      , __          ,
+      KC_PERC , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,     KC_6    , KC_7    , KC_8    , KC_9     , KC_0    , KC_DQUO     ,
+      KC_AT   , KC_PIPE , KC_MINS , KC_LCBR , KC_RCBR , KC_QUES ,     KC_EXLM , KC_LPRN , KC_RPRN , KC_SLASH , KC_AMPR , KC_BACKSLASH,
+      KC_EQL  , KC_HASH , KC_PLUS , KC_LBRC , KC_RBRC , KC_GRV  ,     KC_TILD , KC_LABK , KC_RABK , KC_ASTR  , KC_CIRC , KC_DLR      ,
+                                              __      , __      ,     KC_DEL  , KC_SPC
 ),
 
 [NAVIGATION] = LAYOUT(
@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       __ , __      , __      , __      , __      , __ ,     KC_1    , KC_2    , KC_3    , KC_4     , KC_5         , __,
       __ , KC_LSFT , KC_LALT , KC_LGUI , KC_LCTL , __ ,     KC_LEFT , KC_DOWN , KC_UP   , KC_RIGHT , C(S(KC_TAB)) , __,
       __ , __      , __      , __      , __      , __ ,     KC_HOME , KC_PGDN , KC_PGUP , KC_END   , C(KC_TAB)    , __,
-                                         MO(3)   , __ ,     __      , __
+                                         __      , __ ,     __      , __
 ),
 
 [EXTRA] = LAYOUT(

@@ -2,7 +2,7 @@
 #include QMK_KEYBOARD_H // needed
 
 #define ___ 0, 0, 0
-#define YELLOW 41, 255, 255
+#define YELLOW 50, 255, 255
 #define ORANGE 29, 255, 255
 #define PINK 238, 255, 255
 #define PURPLE 196, 255, 255

@@ -10,7 +10,8 @@ enum Layer {
     SYMBOLS,
     NAVIGATION,
     EXTRA,
-    STENO
+    STENO,
+    LAYER_COUNT
 };
 
 #define KC_A_S LSFT_T(KC_A)

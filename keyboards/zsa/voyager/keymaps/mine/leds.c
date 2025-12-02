@@ -21,21 +21,21 @@ LEDMAP_START = {
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
-                          MOV, MOD, SYM, MOV
+                          MOV, SYM, MOV, MOV
   ),
   [SYMBOLS] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       SYM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, SYM,
       SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
       SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
-                          ___, ___, SYM, MOV
+                          ___, ___, SYM, SYM
   ),
   [NAVIGATION] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       ___, ___, ___, ___, ___, ___, NUM, NUM, NUM, NUM, NUM, ___,
       ___, MOD, MOD, MOD, MOD, ___, NAV, NAV, NAV, NAV, NAV, ___,
       ___, ___, ___, ___, ___, ___, NAV, NAV, NAV, NAV, NAV, ___,
-                          MOV, ___, ___, ___
+                          ___, ___, ___, ___
   ),
   [EXTRA] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
@@ -49,7 +49,7 @@ LEDMAP_START = {
       ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
       ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
       ___, ___, ___, ___, STN, ___, ___, STN, ___, ___, ___, ___,
-                          ___, ___, ___, ___
+                          STN, STN, STN, STN
   )
 };
 // clang-format on
@@ -78,7 +78,7 @@ void set_layer_color(int layer) {
 
 bool rgb_matrix_indicators_user(void) {
     int layer = biton32(layer_state);
-    if (!keyboard_config.disable_layer_led && layer >= MAIN && layer <= STENO) {
+    if (!keyboard_config.disable_layer_led && layer < LAYER_COUNT) {
         set_layer_color(layer);
     } else {
         rgb_matrix_set_color_all(0, 0, 0);
