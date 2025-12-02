@@ -23,3 +23,13 @@ enum Layer {
 #define KC_E_G RGUI_T(KC_E)
 #define KC_I_A RALT_T(KC_I)
 #define KC_O_S RSFT_T(KC_O)
+
+#define ___ 0, 0, 0
+#define YELLOW 50, 255, 255
+#define ORANGE 29, 255, 255
+#define PINK 238, 255, 255
+#define PURPLE 196, 255, 255
+#define BLUE 162, 255, 255
+#define CYAN 137, 255, 255
+#define RED 255, 255, 225
+#define GREEN 94, 255, 225

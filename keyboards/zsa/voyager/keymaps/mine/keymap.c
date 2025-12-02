@@ -1,7 +1,10 @@
 #include QMK_KEYBOARD_H
+#include "chordal.h"
 #include "constants.h"
-#include "leds.h"
 #include "keys_debug.h"
+#include "leds.h"
+#include "shift.h"
+#include "tapping.h"
 
 #define __ KC_NO
 
