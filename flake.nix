@@ -30,9 +30,11 @@
               nixpkgs-fmt
               qmk
               just
+              yq-go
               python3
               python3Packages.pip
               inkscape
+              hid-listen
             ];
 
             shellHook = ''

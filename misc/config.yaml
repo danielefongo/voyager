@@ -182,3 +182,4 @@ parse_config:
     STN_O: 'O'
     STN_E: 'E'
     STN_U: 'U'
+    C_CAPSWORD: "󰪛 WORD"

@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "chordal.h"
+#include "combos.h"
 #include "constants.h"
 #include "keys_debug.h"
 #include "leds.h"
