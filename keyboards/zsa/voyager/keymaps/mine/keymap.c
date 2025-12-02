@@ -8,11 +8,11 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MAIN] = LAYOUT(
-      TO(4)   , KC_1   , KC_2   , KC_3   , KC_4          , KC_5   ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
-      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B   ,     KC_J           , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
-      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G   ,     KC_M           , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
-      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V   ,     KC_K           , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
-                                           LT(1, KC_ENT) , KC_ESC ,     LT(3, KC_BSPC) , LT(2, KC_SPC)
+      TO(5)   , KC_1   , KC_2   , KC_3   , KC_4          , KC_5          ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
+      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B          ,     KC_J           , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
+      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G          ,     KC_M           , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
+      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V          ,     KC_K           , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
+                                           LT(1, KC_ENT) , LT(3, KC_ESC) ,     LT(4, KC_BSPC) , LT(2, KC_SPC)
 ),
 
 [SYMBOLS] = LAYOUT(
@@ -29,6 +29,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       __ , KC_LSFT , KC_LALT , KC_LGUI , KC_LCTL , __ ,     KC_LEFT , KC_DOWN , KC_UP   , KC_RIGHT , C(S(KC_TAB)) , __,
       __ , __      , __      , __      , __      , __ ,     KC_HOME , KC_PGDN , KC_PGUP , KC_END   , C(KC_TAB)    , __,
                                          __      , __ ,     __      , __
+),
+
+[MOUSE] = LAYOUT(
+      __      , __      , __      , __      , __      , __     ,     __      , __      , __      , __      , __ , __,
+      __      , __      , MS_BTN2 , MS_BTN3 , MS_BTN1 , __     ,     MS_WHLU , __      , MS_UP   , __      , __ , __,
+      __      , KC_LSFT , KC_LALT , KC_LGUI , KC_LCTL , __     ,     MS_WHLD , MS_LEFT , MS_DOWN , MS_RGHT , __ , __,
+      QK_LLCK , __      , __      , __      , __      , KC_ESC ,     __      , __      , __      , __      , __ , __,
+                                              __      , __     ,     MS_BTN1 , MS_BTN2
 ),
 
 [EXTRA] = LAYOUT(

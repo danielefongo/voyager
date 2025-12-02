@@ -21,7 +21,7 @@ LEDMAP_START = {
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
-                          MOV, SYM, MOV, MOV
+                          MOV, MOV, MOV, MOV
   ),
   [SYMBOLS] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
@@ -36,6 +36,13 @@ LEDMAP_START = {
       ___, MOD, MOD, MOD, MOD, ___, NAV, NAV, NAV, NAV, NAV, ___,
       ___, ___, ___, ___, ___, ___, NAV, NAV, NAV, NAV, NAV, ___,
                           ___, ___, ___, ___
+  ),
+  [MOUSE] = LEDS(
+      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+      ___, ___, NAV, NAV, NAV, ___, NAV, ___, NAV, ___, ___, ___,
+      ___, MOD, MOD, MOD, MOD, ___, NAV, NAV, NAV, NAV, ___, ___,
+      MOV, ___, ___, ___, ___, SYM, ___, ___, ___, ___, ___, ___,
+                          ___, ___, NAV, NAV
   ),
   [EXTRA] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,

@@ -9,6 +9,7 @@ enum Layer {
     MAIN,
     SYMBOLS,
     NAVIGATION,
+    MOUSE,
     EXTRA,
     STENO,
     LAYER_COUNT
