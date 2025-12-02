@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "enums.h"
+#include "constants.h"
 #include "leds.h"
 #include "keys_debug.h"
 
@@ -8,11 +8,11 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MAIN] = LAYOUT(
-      TO(4)   , KC_1         , KC_2         , KC_3         , KC_4          , KC_5           ,     KC_6    , KC_7          , KC_8         , KC_9         , KC_0         , __        ,
-      KC_TAB  , KC_Q         , KC_W         , KC_F         , KC_P          , KC_B           ,     KC_J    , KC_L          , KC_U         , KC_Y         , KC_SEMICOLON , S(KC_QUOT),
-      KC_COLN , LSFT_T(KC_A) , LALT_T(KC_R) , LGUI_T(KC_S) , LCTL_T(KC_T)  , KC_G           ,     KC_M    , RCTL_T(KC_N)  , RGUI_T(KC_E) , RALT_T(KC_I) , RSFT_T(KC_O) , KC_QUOT   ,
-      KC_EQL  , KC_Z         , KC_X         , KC_C         , KC_D          , KC_V           ,     KC_K    , KC_H          , KC_COMMA     , KC_DOT       , KC_SLSH      , KC_UNDS   ,
-                                                             LT(1, KC_ENT) , LSFT_T(KC_ESC) ,     KC_BSPC , LT(2, KC_SPC)
+      TO(4)   , KC_1   , KC_2   , KC_3   , KC_4          , KC_5           ,     KC_6    , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
+      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B           ,     KC_J    , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
+      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G           ,     KC_M    , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
+      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V           ,     KC_K    , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
+                                           LT(1, KC_ENT) , LSFT_T(KC_ESC) ,     KC_BSPC , LT(2, KC_SPC)
 ),
 
 [SYMBOLS] = LAYOUT(
