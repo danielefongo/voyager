@@ -64,9 +64,9 @@ LEDMAP_START = {
   ),
   [MOUSE] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
-      ___, ___, NAV, NAV, NAV, ___, NAV, ___, NAV, ___, ___, ___,
-      ___, MOD, MOD, MOD, MOD, ___, NAV, NAV, NAV, NAV, ___, ___,
-      MOV, ___, ___, ___, ___, SYM, ___, ___, ___, ___, ___, ___,
+      ___, ___, NAV, NAV, NAV, ___, ___, ___, NAV, ___, ___, ___,
+      ___, MOD, MOD, MOD, MOD, ___, ___, NAV, NAV, NAV, ___, ___,
+      MOV, ___, ___, ___, ___, SYM, ___, NAV, NAV, ___, ___, ___,
                           ___, ___, NAV, NAV
   ),
   [EXTRA] = LEDS(
