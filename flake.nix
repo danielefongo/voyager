@@ -18,7 +18,7 @@
 
         qmkRev = "e10429baae2a4b3ffec67fe31a5e1ac3212817f0";
 
-        qmkFirmware = pkgs.fetchFromGitHub {
+        qmkFW = pkgs.fetchFromGitHub {
           owner = "qmk";
           repo = "qmk_firmware";
           rev = "${qmkRev}";
@@ -26,25 +26,44 @@
           fetchSubmodules = true;
         };
 
-        patchedQmkFirmware = pkgs.runCommandLocal "patched_qmk_firmware" { } ''
-          mkdir -p $out
-          cp -r ${qmkFirmware}/* $out/
+        vialQmkFW = pkgs.fetchFromGitHub {
+          owner = "vial-kb";
+          repo = "vial-qmk";
+          rev = "be1db8dffff3b279b498cb5b6c49fcae75f7c96b";
+          sha256 = "sha256-i3YybuIehC9ogDMCORvU7cSxOdp10LPfmbbwh3X7mNc=";
+          fetchSubmodules = true;
+        };
 
-          substituteInPlace "$out/paths.mk" --replace '.build' '/tmp/.tmp_build'
+        patchedQmkFW =
+          pkg:
+          pkgs.runCommandLocal "patched_qmk_firmware" { } ''
+            mkdir -p $out
+            cp -r ${pkg}/* $out/
 
-          for f in $out/builddefs/common_rules.mk $out/platforms/chibios/platform.mk
-          do
-            substituteInPlace "$f" \
-              --replace ' $(TARGET).bin' ' $(BUILD_DIR)/$(TARGET).bin.ignore' \
-              --replace ' $(TARGET).$(FIRMWARE_FORMAT)' ' $(BUILD_DIR)/$(TARGET).$(FIRMWARE_FORMAT).ignore'
-          done
+            substituteInPlace "$out/paths.mk" --replace '.build' '/tmp/.tmp_build'
 
-          for f in $out/lib/python/qmk/build_targets.py $out/lib/python/qmk/compilation_database.py
-          do
-            substituteInPlace "$f" \
-              --replace "output_path = QMK_FIRMWARE / 'compile_commands.json'" "output_path = Path('/tmp/compile_commands.json.ignore')"
-          done
-        '';
+            for f in $out/builddefs/common_rules.mk $out/platforms/chibios/platform.mk
+            do
+              substituteInPlace "$f" \
+                --replace ' $(TARGET).bin' ' $(BUILD_DIR)/$(TARGET).bin.ignore' \
+                --replace ' $(TARGET).$(FIRMWARE_FORMAT)' ' $(BUILD_DIR)/$(TARGET).$(FIRMWARE_FORMAT).ignore'
+            done
+
+            for f in $out/lib/python/qmk/build_targets.py $out/lib/python/qmk/compilation_database.py
+            do
+              substituteInPlace "$f" \
+                --replace "output_path = QMK_FIRMWARE / 'compile_commands.json'" "output_path = Path('/tmp/compile_commands.json.ignore')"
+            done
+          '';
+
+        vialEnabled =
+          ./keyboards/zsa/voyager/keymaps/mine/rules.mk
+          |> builtins.readFile
+          |> (
+            rules: pkgs.lib.hasInfix "VIAL_ENABLE = yes" rules && pkgs.lib.hasInfix "VIA_ENABLE = yes" rules
+          );
+
+        selectedFirmware = if vialEnabled then (patchedQmkFW vialQmkFW) else (patchedQmkFW qmkFW);
 
         qmkDeps =
           (pkgs.fetchurl {
@@ -113,7 +132,7 @@
             yq-go
           ];
           env = {
-            QMK_HOME = "${patchedQmkFirmware}";
+            QMK_HOME = "${selectedFirmware}";
             PATH = "${pythonEnv}/bin:$PATH";
             SKIP_GIT = "1";
           };

@@ -1,11 +1,14 @@
 #include QMK_KEYBOARD_H
-#include "chordal.h"
-#include "combos.h"
+
 #include "constants.h"
-#include "keys_debug.h"
-#include "leds.h"
 #include "shift.h"
-#include "tapping.h"
+
+#ifndef VIAL
+#    include "chordal.h"
+#    include "combos.h"
+#    include "leds.h"
+#    include "tapping.h"
+#endif
 
 #define __ KC_NO
 
@@ -62,7 +65,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 void keyboard_post_init_user(void) {
+#ifndef VIAL
     enable_leds();
+#endif
 }
 
 bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -73,9 +78,11 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LED_TOG:
+#ifndef VIAL
             if (record->event.pressed) {
                 toggle_leds();
             }
+#endif
             return false;
         default:
             return true;

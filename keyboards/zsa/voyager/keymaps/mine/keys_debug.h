@@ -1,5 +1,5 @@
 #pragma once
-#include "tapping.h"
+#include "constants.h"
 #include QMK_KEYBOARD_H // needed
 
 #ifdef CONSOLE_ENABLE
@@ -41,7 +41,7 @@ void post_debug_key(uint16_t keycode, keyrecord_t *record) {
         uint8_t  layout_row     = matrix_to_layout[row][col][1];
         uint8_t  layout_col     = matrix_to_layout[row][col][0];
 
-        uint16_t tapping_term = TAPPING_TERM + (int8_t)pgm_read_byte(&tapping_term_delays[row][col]);
+        uint16_t tapping_term = TAPPING_TERM + (int8_t)pgm_read_byte(&delays[row][col]);
 
         bool hold = press_duration > tapping_term;
 

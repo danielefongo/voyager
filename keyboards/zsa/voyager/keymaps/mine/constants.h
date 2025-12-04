@@ -33,3 +33,14 @@ enum Layer {
 #define CYAN 137, 255, 255
 #define RED 255, 255, 225
 #define GREEN 94, 255, 225
+
+// clang-format off
+const char delays[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+  LAYOUT(
+  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
+  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
+  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
+  50  , 50  , 30  , 0   , 0   , 0   , 0   , 0   , 0   , 30  , 50  , 50  ,
+                          40  , 0   , 0   , 40
+);
+// clang-format on
