@@ -1,10 +1,3 @@
-init:
-  qmk setup
-  qmk config user.overlay_dir="$PWD"
-  qmk config compile.keyboard=zsa/voyager
-  qmk config compile.keymap=mine
-  pip install -r $HOME/qmk_firmware/requirements.txt
-
 compile:
   qmk compile -j 0
   just _generate-image
