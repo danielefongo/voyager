@@ -67,6 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void keyboard_post_init_user(void) {
 #ifndef VIAL
     enable_leds();
+    keyboard_config.led_level = 0;
 #endif
 }
 

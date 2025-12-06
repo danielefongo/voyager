@@ -22,15 +22,18 @@
  *        Pure QMK settings        *
  *================================*/
 #define PERMISSIVE_HOLD
-
 #define CHORDAL_HOLD
 
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
+#define QUICK_TAP_TERM 200
 
 #define AUTO_SHIFT_TIMEOUT 200
+#define AUTO_SHIFT_REPEAT
 #define NO_AUTO_SHIFT_SYMBOLS
-#define RETRO_SHIFT 400
+#define RETRO_SHIFT AUTO_SHIFT_TIMEOUT * 2
+
+#define CAPS_LOCK_STATUS
 
 #define MOUSEKEY_INERTIA
 #undef MOUSEKEY_DELAY

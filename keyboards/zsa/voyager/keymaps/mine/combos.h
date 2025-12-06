@@ -2,23 +2,13 @@
 
 #ifdef COMBO_ENABLE
 enum combos {
-    C_CAPSWORD,
+    C_CAPSLOCK,
     COMBO_LENGTH
 };
 
-const uint16_t PROGMEM c_capsword[] = {KC_G, KC_M, COMBO_END};
+const uint16_t PROGMEM c_capsword[] = {KC_H, KC_COMM, COMBO_END};
 
 combo_t key_combos[] = {
-    [C_CAPSWORD] = COMBO_ACTION(c_capsword),
+    [C_CAPSLOCK] = COMBO(c_capsword, KC_CAPS_LOCK),
 };
-
-void process_combo_event(uint16_t combo_index, bool pressed) {
-    switch (combo_index) {
-        case C_CAPSWORD:
-            if (pressed) {
-                caps_word_on();
-            }
-            break;
-    }
-}
 #endif
