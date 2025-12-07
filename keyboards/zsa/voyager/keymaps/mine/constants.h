@@ -24,6 +24,9 @@ enum Layer {
 #define KC_I_A RALT_T(KC_I)
 #define KC_O_S RSFT_T(KC_O)
 
+#define RGB_VAD QK_UNDERGLOW_VALUE_DOWN
+#define RGB_VAU QK_UNDERGLOW_VALUE_UP
+
 #define ___ 0, 0, 0
 #define YELLOW 50, 255, 255
 #define ORANGE 29, 255, 255

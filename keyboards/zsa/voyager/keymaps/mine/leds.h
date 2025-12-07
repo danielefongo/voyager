@@ -71,9 +71,9 @@ LEDMAP_START = {
   ),
   [EXTRA] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
-      SYS, SYS, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
-      MOD, SYS, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
-      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+      ___, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
+      ___, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
+      SYS, ___, SYS, SYS, SYS, ___, ___, ___, ___, ___, ___, ___,
                           ___, ___, ___, ___
   ),
   [STENO] = LEDS(

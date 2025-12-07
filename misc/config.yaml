@@ -122,6 +122,9 @@ parse_config:
     KC_LEFT: '$$phosphor:bold/arrow-left$$'
     KC_RIGHT: '$$phosphor:bold/arrow-right$$'
     LED_TOG: '$$phosphor:bold/lightbulb$$'
+    RGB_VAD: '$$phosphor:bold/sun-horizon$$'
+    RGB_VAU: '$$phosphor:bold/sun$$'
+    LED_TOG: '$$phosphor:bold/lightbulb$$'
     KC_VOLD: '$$phosphor:bold/speaker-low$$'
     KC_VOLU: '$$phosphor:bold/speaker-high$$'
     KC_MUTE: '$$phosphor:bold/speaker-slash$$'
@@ -182,4 +185,4 @@ parse_config:
     STN_O: 'O'
     STN_E: 'E'
     STN_U: 'U'
-    C_CAPSLOCK: "󰪛 LOCK"
+    CAPS_LOCK: "󰪛 LOCK"
