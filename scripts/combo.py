@@ -20,26 +20,54 @@ kc_map = cfg.get("qmk_keycode_map", {})
 kc_prefixes = cfg.get("qmk_remove_keycode_prefix", [])
 
 
-def resolve_kc(kc):
+def parse_qmk_function(kc):
     kc = kc.strip()
+    match = re.match(r"\w+\([^,]+,\s*(.+)\)", kc)
+    if match:
+        return match.group(1).strip()
+    return kc
+
+
+def resolve_kc_for_output(kc):
+    kc = parse_qmk_function(kc)
+    if kc in kc_map:
+        return kc_map[kc] if kc_map[kc] else kc
     for p in kc_prefixes:
         if kc.startswith(p):
-            kc = kc[len(p) :]
-    return kc_map.get(kc, kc)
+            kc_without_prefix = kc[len(p) :]
+            if kc_without_prefix in kc_map:
+                return (
+                    kc_map[kc_without_prefix]
+                    if kc_map[kc_without_prefix]
+                    else kc_without_prefix
+                )
+            return kc_without_prefix
+    return kc
+
+
+def resolve_kc_simple(kc):
+    full = resolve_kc_for_output(kc)
+    if " " in full:
+        return full.strip().split()[-1]
+    return full
 
 
 with open(yaml_path) as f:
     layers = yaml.safe_load(f).get("layers", {})
 
-layer_keys = {
-    name: {
-        k if isinstance(k, str) else k.get("t")
-        for row in rows
-        for k in row
-        if isinstance(k, str) or "t" in k
-    }
-    for name, rows in layers.items()
-}
+layer_keys_simple = {}
+for name, rows in layers.items():
+    keys_simple = set()
+    for row in rows:
+        for k in row:
+            if isinstance(k, str):
+                clean = k.strip().split()[-1] if k.strip() else k
+                keys_simple.add(clean)
+            elif isinstance(k, dict) and "t" in k:
+                tap_key = k["t"]
+                clean = tap_key.strip().split()[-1] if tap_key.strip() else tap_key
+                keys_simple.add(clean)
+    layer_keys_simple[name] = keys_simple
 
 with open(c_path) as f:
     code = f.read()
@@ -50,26 +78,54 @@ defs = dict(
 combos = []
 
 
+def split_combo_keys(raw_keys):
+    keys = []
+    current = ""
+    paren_depth = 0
+
+    for char in raw_keys:
+        if char == "(":
+            paren_depth += 1
+            current += char
+        elif char == ")":
+            paren_depth -= 1
+            current += char
+        elif char == "," and paren_depth == 0:
+            key = current.strip()
+            if key and "COMBO_END" not in key:
+                keys.append(key)
+            current = ""
+        else:
+            current += char
+
+    key = current.strip()
+    if key and "COMBO_END" not in key:
+        keys.append(key)
+
+    return keys
+
+
 def add_combo(raw_keys, out_kc):
-    keys = [k.strip() for k in raw_keys.split(",") if "COMBO_END" not in k]
-    labels = [resolve_kc(k) for k in keys]
-    result = resolve_kc(out_kc)
+    keys = split_combo_keys(raw_keys)
+    labels_simple = [resolve_kc_simple(k) for k in keys]
+    labels_full = [resolve_kc_for_output(k) for k in keys]
+    result = resolve_kc_for_output(out_kc)
 
     found_layer = next(
         (
             lname
-            for lname, keys_set in layer_keys.items()
-            if all(l in keys_set or f"KC_{l}" in keys_set for l in labels)
+            for lname, keys_set in layer_keys_simple.items()
+            if all(l in keys_set for l in labels_simple)
         ),
         None,
     )
 
-    entry = {"trigger_keys": labels, "key": result}
+    entry = {"trigger_keys": labels_full, "key": result}
     if found_layer:
         entry["layers"] = [found_layer]
     else:
         print(
-            f"# ⚠️  Could not detect layer: trigger={labels}, key={result}",
+            f"# ⚠️  Could not detect layer: trigger={labels_simple}, key={result}",
             file=sys.stderr,
         )
 
