@@ -130,6 +130,7 @@
             keymapDrawer
             inkscape
             yq-go
+            black
           ];
           env = {
             QMK_HOME = "${selectedFirmware}";
