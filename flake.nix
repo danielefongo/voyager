@@ -131,6 +131,7 @@
             inkscape
             yq-go
             black
+            clang-tools
           ];
           env = {
             QMK_HOME = "${selectedFirmware}";

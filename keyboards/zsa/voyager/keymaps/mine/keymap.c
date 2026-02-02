@@ -39,19 +39,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MOUSE] = LAYOUT(
-      __      , __      , __      , __      , __      , __     ,     __      , __      , __      , __      , __ , __,
-      __      , __      , MS_BTN2 , MS_BTN3 , MS_BTN1 , __     ,     __      , __      , MS_UP   , __      , __ , __,
-      __      , KC_LSFT , KC_LALT , KC_LGUI , KC_LCTL , __     ,     __      , MS_LEFT , MS_DOWN , MS_RGHT , __ , __,
-      QK_LLCK , __      , __      , __      , __      , KC_ESC ,     __      , MS_WHLD , MS_WHLU , __      , __ , __,
-                                              __      , __     ,     MS_BTN1 , MS_BTN2
+      __      , __        , __      , __      , __         , __    ,     __ , __ , __ , __ , __ , __,
+      __      , __        , __      , MS_BTN4 , MS_BTN5    , __    ,     __ , __ , __ , __ , __ , __,
+      KC_ESC  , NAV_TURBO , MS_BTN3 , MS_BTN2 , MS_BTN1    , __    ,     __ , __ , __ , __ , __ , __,
+      QK_LLCK , NAV_AIM   , KC_LSFT , KC_LCTL , NAV_SCROLL , __    ,     __ , __ , __ , __ , __ , __,
+                                                __         , MO(3) ,     __ , __
 ),
 
 [EXTRA] = LAYOUT(
-      __              , __ , __      , __      , __      , __ ,     __    , __    , __    , __     , __     , __    ,
-      __              , __ , KC_MPLY , KC_MPRV , KC_MNXT , __ ,     KC_F1 , KC_F2 , KC_F3 , KC_F4  , KC_F5  , KC_F6 ,
-      __              , __ , KC_MUTE , KC_VOLD , KC_VOLU , __ ,     KC_F7 , KC_F8 , KC_F9 , KC_F10 , KC_F11 , KC_F12,
-      KC_PRINT_SCREEN , __ , LED_TOG , RGB_VAD , RGB_VAU , __ ,     __    , __    , __    , __     , __     , __    ,
-                                                 __      , __ ,     __    , __
+      __              , __      , __      , __      , __      , __ ,     __    , __    , __    , __     , __     , __    ,
+      __              , __      , KC_MPLY , KC_MPRV , KC_MNXT , __ ,     KC_F1 , KC_F2 , KC_F3 , KC_F4  , KC_F5  , KC_F6 ,
+      __              , KC_LSFT , KC_MUTE , KC_VOLD , KC_VOLU , __ ,     KC_F7 , KC_F8 , KC_F9 , KC_F10 , KC_F11 , KC_F12,
+      KC_PRINT_SCREEN , __      , LED_TOG , RGB_VAD , RGB_VAU , __ ,     __    , __    , __    , __     , __     , __    ,
+                                                      __      , __ ,     __    , __
 ),
 
 [STENO] = LAYOUT(
@@ -71,6 +71,25 @@ void keyboard_post_init_user(void) {
 #endif
 }
 
+#ifndef VIAL
+extern bool  set_scrolling;
+extern bool  navigator_turbo;
+extern bool  navigator_aim;
+extern float scroll_accumulated_h;
+extern float scroll_accumulated_v;
+
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true);
+}
+
+bool is_mouse_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!layer_state_is(AUTO_MOUSE_TARGET_LAYER)) {
+        return (IS_MOUSE_KEYCODE(keycode) && !record->event.pressed);
+    }
+    return true;
+}
+#endif
+
 bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
     pre_debug_key(keycode, record);
     return true;
@@ -78,13 +97,30 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LED_TOG:
 #ifndef VIAL
+        case LED_TOG:
             if (record->event.pressed) {
                 toggle_leds();
             }
-#endif
             return false;
+
+        case NAV_SCROLL:
+            set_scrolling = record->event.pressed;
+            if (!record->event.pressed) {
+                scroll_accumulated_h = 0.0f;
+                scroll_accumulated_v = 0.0f;
+            }
+            return false;
+
+        case NAV_TURBO:
+            navigator_turbo = record->event.pressed;
+            return false;
+
+        case NAV_AIM:
+            navigator_aim = record->event.pressed;
+            return false;
+#endif
+
         default:
             return true;
     }

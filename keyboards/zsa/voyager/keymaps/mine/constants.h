@@ -3,6 +3,9 @@
 
 enum custom_keycodes {
     LED_TOG = SAFE_RANGE,
+    NAV_SCROLL,
+    NAV_TURBO,
+    NAV_AIM,
 };
 
 enum Layer {
