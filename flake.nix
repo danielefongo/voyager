@@ -16,13 +16,13 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        qmkRev = "e10429baae2a4b3ffec67fe31a5e1ac3212817f0";
+        zsaQmkRev = "2f7463bddd017600910958528a2632f26bd67a70";
 
-        qmkFW = pkgs.fetchFromGitHub {
-          owner = "qmk";
+        zsaQmkFW = pkgs.fetchFromGitHub {
+          owner = "zsa";
           repo = "qmk_firmware";
-          rev = "${qmkRev}";
-          sha256 = "sha256-AldP6CbwDmoYh9vmRktm5NyXL9Ux3qKZRC/yKmioq5c=";
+          rev = zsaQmkRev;
+          sha256 = "sha256-JQ2A7UHvClZg2PhIbIxWMW8+3qWyPZpcNsCqSqkjY28=";
           fetchSubmodules = true;
         };
 
@@ -63,11 +63,11 @@
             rules: pkgs.lib.hasInfix "VIAL_ENABLE = yes" rules && pkgs.lib.hasInfix "VIA_ENABLE = yes" rules
           );
 
-        selectedFirmware = if vialEnabled then (patchedQmkFW vialQmkFW) else (patchedQmkFW qmkFW);
+        selectedFirmware = if vialEnabled then (patchedQmkFW vialQmkFW) else (patchedQmkFW zsaQmkFW);
 
         qmkDeps =
           (pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/qmk/qmk_firmware/${qmkRev}/requirements.txt";
+            url = "https://raw.githubusercontent.com/zsa/qmk_firmware/${zsaQmkRev}/requirements.txt";
             sha256 = "sha256-IrXwhbUa3r4beZI7Y57nRRfTgnOoSvIOfhR0VOv1pkY=";
           })
           |> builtins.readFile
