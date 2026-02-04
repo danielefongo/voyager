@@ -140,10 +140,17 @@
           };
           shell = "${pkgs.zsh}/bin/zsh";
           shellHook = ''
-            qmk config user.qmk_home="$QMK_HOME"
-            qmk config user.overlay_dir="$PWD"
-            qmk config compile.keyboard="zsa/voyager"
-            qmk config compile.keymap="mine"
+            MARKER_FILE=~/.config/qmk/.voyager_qmk_home
+            CURRENT_QMK_HOME="$QMK_HOME"
+
+            if [ ! -f "$MARKER_FILE" ] || [ "$(cat "$MARKER_FILE" 2>/dev/null)" != "$CURRENT_QMK_HOME" ]; then
+              qmk config user.qmk_home="$QMK_HOME" >/dev/null
+              qmk config user.overlay_dir="$PWD" >/dev/null
+              qmk config compile.keyboard="zsa/voyager" >/dev/null
+              qmk config compile.keymap="mine" >/dev/null
+              mkdir -p ~/.config/qmk
+              echo "$CURRENT_QMK_HOME" > "$MARKER_FILE"
+            fi
           '';
         };
       }
