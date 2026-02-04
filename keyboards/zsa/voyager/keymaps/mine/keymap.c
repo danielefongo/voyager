@@ -88,6 +88,15 @@ bool is_mouse_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (set_scrolling && (mouse_report.h != 0 || mouse_report.v != 0)) {
+        uint16_t hires_res = pointing_device_get_hires_scroll_resolution() / 4;
+        mouse_report.h     = (mouse_hv_report_t)(mouse_report.h * hires_res);
+        mouse_report.v     = (mouse_hv_report_t)(mouse_report.v * hires_res);
+    }
+    return mouse_report;
+}
 #endif
 
 bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
