@@ -27,11 +27,13 @@ void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record)
             unregister_code16((IS_RETRO(keycode)) ? keycode & 0xFF : keycode);
     }
 }
+#endif
 
-uint16_t get_auto_shift_delay(uint16_t keycode, keyrecord_t *record) {
+#ifdef AUTO_SHIFT_TIMEOUT_PER_KEY
+uint16_t get_autoshift_timeout(uint16_t keycode, keyrecord_t *record) {
     uint8_t row = record->event.key.row;
     uint8_t col = record->event.key.col;
 
-    return AUTO_SHIFT_TIMEOUT + pgm_read_word(&delays[row][col]);
+    return AUTO_SHIFT_TIMEOUT + delays[row][col];
 }
 #endif
