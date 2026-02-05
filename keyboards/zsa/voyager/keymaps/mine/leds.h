@@ -43,7 +43,7 @@ void enable_leds(void) {
 LEDMAP_START = {
   [MAIN] = LEDS(
       MOV, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, ___,
-      SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM,
+      SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
                           MOV, MOV, MOV, MOV
@@ -74,13 +74,6 @@ LEDMAP_START = {
       ___, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
       ___, MOD, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
       SYS, ___, SYS, SYS, SYS, ___, ___, ___, ___, ___, ___, ___,
-                          ___, ___, ___, ___
-  ),
-  [STENO] = LEDS(
-      MOV, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
-      ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
-      ___, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN, STN,
-      ___, ___, ___, ___, STN, ___, ___, STN, ___, ___, ___, ___,
                           ___, ___, ___, ___
   )
 };

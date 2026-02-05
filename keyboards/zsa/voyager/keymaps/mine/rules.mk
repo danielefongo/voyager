@@ -1,6 +1,3 @@
-STENO_ENABLE = yes
-STENO_PROTOCOL = geminipr
-
 COMBO_ENABLE = yes
 LTO_ENABLE = yes
 MOUSEKEY_ENABLE = yes

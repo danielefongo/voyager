@@ -14,7 +14,6 @@ enum Layer {
     NAVIGATION,
     MOUSE,
     EXTRA,
-    STENO,
     LAYER_COUNT
 };
 

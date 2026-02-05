@@ -15,7 +15,7 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MAIN] = LAYOUT(
-      TO(5)   , KC_1   , KC_2   , KC_3   , KC_4          , KC_5          ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
+      __      , KC_1   , KC_2   , KC_3   , KC_4          , KC_5          ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
       KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B          ,     KC_J           , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
       KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G          ,     KC_M           , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
       KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V          ,     KC_K           , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
@@ -52,14 +52,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       __              , KC_LSFT , KC_MUTE , KC_VOLD , KC_VOLU , __ ,     KC_F7 , KC_F8 , KC_F9 , KC_F10 , KC_F11 , KC_F12,
       KC_PRINT_SCREEN , __      , LED_TOG , RGB_VAD , RGB_VAU , __ ,     __    , __    , __    , __     , __     , __    ,
                                                       __      , __ ,     __    , __
-),
-
-[STENO] = LAYOUT(
-      TO(0) , STN_N1 , STN_N2 , STN_N3 , STN_N4 , STN_N5  ,     STN_N6  , STN_N7 , STN_N8 , STN_N9 , STN_NA , STN_NB,
-      __    , STN_S1 , STN_TL , STN_PL , STN_HL , STN_ST1 ,     STN_ST3 , STN_FR , STN_PR , STN_LR , STN_TR , STN_DR,
-      __    , STN_S2 , STN_KL , STN_WL , STN_RL , STN_ST2 ,     STN_ST4 , STN_RR , STN_BR , STN_GR , STN_SR , STN_ZR,
-      __    , __     , __     , __     , STN_NC , __      ,     __      , STN_NC , __     , __     , __     , __    ,
-                                         STN_A  , STN_O   ,     STN_E   , STN_U
 )
 };
 // clang-format on
