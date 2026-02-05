@@ -5,12 +5,7 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }:
+    { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -23,14 +18,6 @@
           repo = "qmk_firmware";
           rev = zsaQmkRev;
           sha256 = "sha256-JQ2A7UHvClZg2PhIbIxWMW8+3qWyPZpcNsCqSqkjY28=";
-          fetchSubmodules = true;
-        };
-
-        vialQmkFW = pkgs.fetchFromGitHub {
-          owner = "vial-kb";
-          repo = "vial-qmk";
-          rev = "be1db8dffff3b279b498cb5b6c49fcae75f7c96b";
-          sha256 = "sha256-i3YybuIehC9ogDMCORvU7cSxOdp10LPfmbbwh3X7mNc=";
           fetchSubmodules = true;
         };
 
@@ -55,15 +42,6 @@
                 --replace "output_path = QMK_FIRMWARE / 'compile_commands.json'" "output_path = Path('/tmp/compile_commands.json.ignore')"
             done
           '';
-
-        vialEnabled =
-          ./keyboards/zsa/voyager/keymaps/mine/rules.mk
-          |> builtins.readFile
-          |> (
-            rules: pkgs.lib.hasInfix "VIAL_ENABLE = yes" rules && pkgs.lib.hasInfix "VIA_ENABLE = yes" rules
-          );
-
-        selectedFirmware = if vialEnabled then (patchedQmkFW vialQmkFW) else (patchedQmkFW zsaQmkFW);
 
         qmkDeps =
           (pkgs.fetchurl {
@@ -134,7 +112,7 @@
             clang-tools
           ];
           env = {
-            QMK_HOME = "${selectedFirmware}";
+            QMK_HOME = "${patchedQmkFW zsaQmkFW}";
             PATH = "${pythonEnv}/bin:$PATH";
             SKIP_GIT = "1";
           };

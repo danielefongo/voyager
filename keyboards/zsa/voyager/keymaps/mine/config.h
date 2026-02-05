@@ -1,26 +1,5 @@
 #pragma once
 
-#if defined(VIA_ENABLE) && defined(VIAL_ENABLE)
-#    define VIAL
-#endif
-
-// clang-format off
-#ifdef VIAL
-/*==================================*
- *        Vial-specific settings     *
- *==================================*/
-
-#define VIAL_KEYBOARD_UID {0xFD, 0x2F, 0x7F, 0x8A, 0x39, 0x07, 0xF7, 0xDB}
-
-#define VIAL_UNLOCK_COMBO_ROWS {11, 11}
-#define VIAL_UNLOCK_COMBO_COLS {5, 6}
-
-#define DYNAMIC_KEYMAP_LAYER_COUNT 8
-
-#else
-/*================================*
- *        Pure QMK settings        *
- *================================*/
 #define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
 
@@ -53,8 +32,6 @@
 #define AUTO_MOUSE_THRESHOLD 15
 #define AUTO_MOUSE_TIME 350
 #define AUTO_MOUSE_SCROLL_THRESHOLD AUTO_MOUSE_THRESHOLD / NAVIGATOR_SCROLL_DIVIDER
-#endif
-// clang-format on
 
 #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255

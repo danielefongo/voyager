@@ -2,13 +2,10 @@
 
 #include "constants.h"
 #include "shift.h"
-
-#ifndef VIAL
-#    include "chordal.h"
-#    include "combos.h"
-#    include "leds.h"
-#    include "tapping.h"
-#endif
+#include "chordal.h"
+#include "combos.h"
+#include "leds.h"
+#include "tapping.h"
 
 #define __ KC_NO
 
@@ -57,13 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 void keyboard_post_init_user(void) {
-#ifndef VIAL
     enable_leds();
     keyboard_config.led_level = 0;
-#endif
 }
 
-#ifndef VIAL
 extern bool  set_scrolling;
 extern bool  navigator_turbo;
 extern bool  navigator_aim;
@@ -89,7 +83,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     }
     return mouse_report;
 }
-#endif
 
 bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
     pre_debug_key(keycode, record);
@@ -98,7 +91,6 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-#ifndef VIAL
         case LED_TOG:
             if (record->event.pressed) {
                 toggle_leds();
@@ -120,7 +112,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case NAV_AIM:
             navigator_aim = record->event.pressed;
             return false;
-#endif
 
         default:
             return true;
