@@ -1,18 +1,28 @@
 #pragma once
 
-#define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD_PER_KEY
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define CHORDAL_HOLD
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 120
 #define TAPPING_TERM_PER_KEY
-#define QUICK_TAP_TERM 200
+#define QUICK_TAP_TERM 120
 #define QUICK_TAP_TERM_PER_KEY
 
-#define AUTO_SHIFT_TIMEOUT 200
+#define AUTO_SHIFT_TIMEOUT 180
 #define AUTO_SHIFT_TIMEOUT_PER_KEY
 #define AUTO_SHIFT_REPEAT
 #define NO_AUTO_SHIFT_SYMBOLS
 #define RETRO_SHIFT AUTO_SHIFT_TIMEOUT * 2
+
+#define T_1 0
+#define T_2 0
+#define T_3 0
+#define T_4 0
+#define T_5 0
+#define T_6 0
+#define T_T1 40
+#define T_T2 80
 
 #define CAPS_LOCK_STATUS
 
