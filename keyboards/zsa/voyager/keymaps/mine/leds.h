@@ -110,6 +110,13 @@ bool rgb_matrix_indicators_user(void) {
         return true;
     }
 
+    if (is_sequence_pin_recording()) {
+        HSV hsv = {.h = 50, .s = 255, .v = 255};
+        RGB rgb = hsv_to_rgb_with_value(hsv);
+        rgb_matrix_set_color_all(rgb.r, rgb.g, rgb.b);
+        return true;
+    }
+
     int layer = biton32(layer_state);
     if (!keyboard_config.disable_layer_led && layer < LAYER_COUNT) {
         set_layer_color(layer);
