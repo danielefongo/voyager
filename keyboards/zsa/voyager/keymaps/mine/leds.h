@@ -1,5 +1,6 @@
 #pragma once
 #include "constants.h"
+#include "sequence_storage.h"
 #include QMK_KEYBOARD_H // needed
 
 #define TXT CYAN
@@ -73,7 +74,7 @@ LEDMAP_START = {
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       ___, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
       ___, MOD, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
-      SYS, ___, SYS, SYS, SYS, ___, ___, ___, ___, ___, ___, ___,
+      SYS, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
                           ___, ___, ___, ___
   )
 };
@@ -102,6 +103,13 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
+    if (is_sequence_recording()) {
+        HSV hsv = {.h = 0, .s = 255, .v = 255};
+        RGB rgb = hsv_to_rgb_with_value(hsv);
+        rgb_matrix_set_color_all(rgb.r, rgb.g, rgb.b);
+        return true;
+    }
+
     int layer = biton32(layer_state);
     if (!keyboard_config.disable_layer_led && layer < LAYER_COUNT) {
         set_layer_color(layer);

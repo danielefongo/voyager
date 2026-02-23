@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 
 #include "constants.h"
+#include "sequence_storage.h"
 #include "shift.h"
 #include "chordal.h"
 #include "combos.h"
@@ -8,6 +9,18 @@
 #include "tapping.h"
 
 #define __ KC_NO
+
+#define TS0 TD_SEQ_0
+#define TS1 TD_SEQ_1
+#define TS2 TD_SEQ_2
+#define TS3 TD_SEQ_3
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TS0] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, seq_td_finished_0, seq_td_reset_0),
+    [TS1] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, seq_td_finished_1, seq_td_reset_1),
+    [TS2] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, seq_td_finished_2, seq_td_reset_2),
+    [TS3] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, seq_td_finished_3, seq_td_reset_3),
+};
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -44,11 +57,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [EXTRA] = LAYOUT(
-      __              , __      , __      , __      , __      , __ ,     __    , __    , __    , __     , __     , __    ,
-      __              , __      , KC_MPLY , KC_MPRV , KC_MNXT , __ ,     KC_F1 , KC_F2 , KC_F3 , KC_F4  , KC_F5  , KC_F6 ,
-      __              , KC_LSFT , KC_MUTE , KC_VOLD , KC_VOLU , __ ,     KC_F7 , KC_F8 , KC_F9 , KC_F10 , KC_F11 , KC_F12,
-      KC_PRINT_SCREEN , __      , LED_TOG , RGB_VAD , RGB_VAU , __ ,     __    , __    , __    , __     , __     , __    ,
-                                                      __      , __ ,     __    , __
+      __              , __ , __      , __      , __      , __ ,     __       , __      , __      , __      , __      , __       ,
+      __              , __ , KC_MPLY , KC_MPRV , KC_MNXT , __ ,     KC_F1    , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6    ,
+      __              , __ , KC_MUTE , KC_VOLD , KC_VOLU , __ ,     KC_F7    , KC_F8   , KC_F9   , KC_F10  , KC_F11  , KC_F12   ,
+      KC_PRINT_SCREEN , __ , LED_TOG , RGB_VAD , RGB_VAU , __ ,     SEQ_LOAD , TD(TS0) , TD(TS1) , TD(TS2) , TD(TS3) , SEQ_SAVE,
+                                                 __      , __ ,     __       , __
 )
 };
 // clang-format on
@@ -56,6 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void keyboard_post_init_user(void) {
     enable_leds();
     keyboard_config.led_level = 0;
+    sequence_storage_load();
 }
 
 extern bool  set_scrolling;
@@ -90,6 +104,8 @@ bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    sequence_process_record(keycode, record);
+
     switch (keycode) {
         case LED_TOG:
             if (record->event.pressed) {
@@ -111,6 +127,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case NAV_AIM:
             navigator_aim = record->event.pressed;
+            return false;
+
+        case SEQ_SAVE:
+            if (record->event.pressed) {
+                sequence_storage_save();
+            }
+            return false;
+
+        case SEQ_LOAD:
+            if (record->event.pressed) {
+                sequence_storage_load();
+            }
             return false;
 
         default:

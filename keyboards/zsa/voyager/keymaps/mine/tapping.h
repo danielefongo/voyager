@@ -4,6 +4,10 @@
 
 #ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    if (keycode >= QK_TAP_DANCE && keycode <= QK_TAP_DANCE_MAX) {
+        return SEQUENCE_TAPPING_TERM;
+    }
+
     uint8_t row = record->event.key.row;
     uint8_t col = record->event.key.col;
 

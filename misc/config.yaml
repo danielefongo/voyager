@@ -185,3 +185,7 @@ parse_config:
     STN_E: 'E'
     STN_U: 'U'
     CAPS_LOCK: "󰪛 LOCK"
+    TD(TS0): 'S1'
+    TD(TS1): 'S2'
+    TD(TS2): 'S3'
+    TD(TS3): 'S4'

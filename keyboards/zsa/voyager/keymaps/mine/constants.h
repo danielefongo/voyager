@@ -6,6 +6,8 @@ enum custom_keycodes {
     NAV_SCROLL,
     NAV_TURBO,
     NAV_AIM,
+    SEQ_SAVE,
+    SEQ_LOAD,
 };
 
 enum Layer {
