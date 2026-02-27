@@ -53,8 +53,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MOUSE] = LAYOUT(
       __      , __        , __      , __      , __         , __    ,     __ , __ , __ , __ , __ , __,
       __      , __        , __      , MS_BTN4 , MS_BTN5    , __    ,     __ , __ , __ , __ , __ , __,
-      KC_ESC  , NAV_TURBO , MS_BTN3 , MS_BTN2 , MS_BTN1    , __    ,     __ , __ , __ , __ , __ , __,
-      QK_LLCK , NAV_AIM   , KC_LSFT , KC_LCTL , NAV_SCROLL , __    ,     __ , __ , __ , __ , __ , __,
+      KC_ESC  , NAV_AIM   , MS_BTN3 , MS_BTN2 , MS_BTN1    , __    ,     __ , __ , __ , __ , __ , __,
+      QK_LLCK , NAV_TURBO , KC_LSFT , KC_LCTL , NAV_SCROLL , __    ,     __ , __ , __ , __ , __ , __,
                                                 __         , MO(3) ,     __ , __
 ),
 
