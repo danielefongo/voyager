@@ -84,14 +84,30 @@ void pointing_device_init_user(void) {
     set_auto_mouse_enable(true);
 }
 
+static uint16_t auto_mouse_toggle_timer = 0;
+
 bool is_mouse_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!layer_state_is(AUTO_MOUSE_TARGET_LAYER)) {
         return (IS_MOUSE_KEYCODE(keycode) && !record->event.pressed);
+    }
+    if (IS_MOUSE_KEYCODE(keycode) || keycode == KC_ESC) {
+        if (!record->event.pressed) {
+            set_auto_mouse_toggled(false);
+            auto_mouse_toggle_timer = 0;
+        }
+        return false;
     }
     return true;
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (layer_state_is(AUTO_MOUSE_TARGET_LAYER) && (mouse_report.x != 0 || mouse_report.y != 0)) {
+        set_auto_mouse_toggled(true);
+        auto_mouse_toggle_timer = timer_read();
+    } else if (auto_mouse_toggle_timer != 0 && timer_elapsed(auto_mouse_toggle_timer) > AUTO_MOUSE_TOGGLE_TIMEOUT) {
+        set_auto_mouse_toggled(false);
+        auto_mouse_toggle_timer = 0;
+    }
     if (set_scrolling && (mouse_report.h != 0 || mouse_report.v != 0)) {
         uint16_t hires_res = pointing_device_get_hires_scroll_resolution() / 4;
         mouse_report.h     = (mouse_hv_report_t)(mouse_report.h * hires_res);
