@@ -28,6 +28,8 @@ enum Layer {
 #define KC_I_A RALT_T(KC_I)
 #define KC_O_S RSFT_T(KC_O)
 
+#define KC_ESC_S LSFT_T(KC_ESC)
+
 #define RGB_VAD QK_UNDERGLOW_VALUE_DOWN
 #define RGB_VAU QK_UNDERGLOW_VALUE_UP
 

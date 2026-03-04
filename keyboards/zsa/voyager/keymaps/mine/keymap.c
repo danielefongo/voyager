@@ -27,11 +27,11 @@ tap_dance_action_t tap_dance_actions[] = {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MAIN] = LAYOUT(
-      __      , KC_1   , KC_2   , KC_3   , KC_4          , KC_5          ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
-      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B          ,     KC_J           , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
-      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G          ,     KC_M           , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
-      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V          ,     KC_K           , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
-                                           LT(1, KC_ENT) , LT(3, KC_ESC) ,     LT(4, KC_BSPC) , LT(2, KC_SPC)
+      __      , KC_1   , KC_2   , KC_3   , KC_4          , KC_5     ,     KC_6           , KC_7          , KC_8     , KC_9   , KC_0         , __        ,
+      KC_TAB  , KC_Q   , KC_W   , KC_F   , KC_P          , KC_B     ,     KC_J           , KC_L          , KC_U     , KC_Y   , KC_SEMICOLON , S(KC_QUOT),
+      KC_COLN , KC_A_S , KC_R_A , KC_S_G , KC_T_C        , KC_G     ,     KC_M           , KC_N_C        , KC_E_G   , KC_I_A , KC_O_S       , KC_QUOT   ,
+      KC_EQL  , KC_Z   , KC_X   , KC_C   , KC_D          , KC_V     ,     KC_K           , KC_H          , KC_COMMA , KC_DOT , KC_SLSH      , KC_UNDS   ,
+                                           LT(1, KC_ENT) , KC_ESC_S ,     LT(4, KC_BSPC) , LT(2, KC_SPC)
 ),
 
 [SYMBOLS] = LAYOUT(

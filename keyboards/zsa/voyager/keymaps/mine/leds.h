@@ -47,7 +47,7 @@ LEDMAP_START = {
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
-                          MOV, MOV, MOV, MOV
+                          MOV, MOD, MOV, MOV
   ),
   [SYMBOLS] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,

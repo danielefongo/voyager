@@ -114,6 +114,7 @@ parse_config:
     KC_RCTL: '󰘴'
     KC_T_C: '󰘴  T'
     KC_N_C: '󰘴  N'
+    KC_ESC_S: '󰘶  ESC'
     KC_ENT: '$$phosphor:bold/key-return$$'
     KC_BSPC: '$$phosphor:bold/backspace$$'
     KC_DEL: '$$phosphor:bold/eraser$$'

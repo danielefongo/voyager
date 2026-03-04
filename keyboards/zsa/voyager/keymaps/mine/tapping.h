@@ -27,7 +27,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 #ifdef PERMISSIVE_HOLD_PER_KEY
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(3, KC_ESC):
         case LT(4, KC_BSPC):
         case LT(2, KC_SPC):
             return true;
@@ -40,6 +39,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 #ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case KC_ESC_S:
         case LT(1, KC_ENT):
             return true;
         default:
