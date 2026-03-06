@@ -43,18 +43,18 @@ void enable_leds(void) {
 
 LEDMAP_START = {
   [MAIN] = LEDS(
-      MOV, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, ___,
+      ___, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, ___,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
-                          MOV, MOD, MOV, MOV
+                          MOV, MOV, MOD, MOV
   ),
   [SYMBOLS] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       SYM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, NUM, SYM,
       SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
       SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM, SYM,
-                          ___, ___, ___, ___
+                          ___, ___, SYM, SYM
   ),
   [NAVIGATION] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
@@ -63,19 +63,19 @@ LEDMAP_START = {
       ___, ___, ___, ___, ___, ___, NAV, NAV, NAV, NAV, NAV, ___,
                           ___, ___, ___, ___
   ),
-  [MOUSE] = LEDS(
-      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
-      ___, ___, MOV, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
-      ___, NAV, NAV, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
-      ___, NAV, SYM, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
-                          MOV, SYM, ___, ___
-  ),
   [EXTRA] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
       ___, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
       ___, MOD, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
       SYS, ___, SYS, SYS, SYS, ___, SYS, SYS, SYS, SYS, SYS, SYS,
                           ___, ___, ___, ___
+  ),
+  [MOUSE] = LEDS(
+      ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+      ___, SYM, MOV, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
+      ___, NAV, NAV, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
+      ___, NAV, SYM, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
+                          ___, MOV, ___, ___
   )
 };
 // clang-format on
