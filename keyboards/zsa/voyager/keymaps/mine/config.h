@@ -9,19 +9,22 @@
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define CHORDAL_HOLD
 
-#define TAPPING_TERM 200
+#define FLOW_TAP_TERM 80
+#define TAPPING_TERM 100
 #define TAPPING_TERM_PER_KEY
-#define QUICK_TAP_TERM 120
+#define QUICK_TAP_TERM 100
 #define QUICK_TAP_TERM_PER_KEY
+#define COMBO_TERM 30
 
-#define T_1 0
-#define T_2 0
-#define T_3 0
-#define T_4 0
-#define T_5 0
-#define T_6 0
-#define T_T1 40
-#define T_T2 80
+// clang-format off
+#ifdef AUTO_SHIFT_ENABLE
+#define AUTO_SHIFT_TIMEOUT 240
+#define AUTO_SHIFT_TIMEOUT_PER_KEY
+#define AUTO_SHIFT_REPEAT
+#define NO_AUTO_SHIFT_SYMBOLS
+#define RETRO_SHIFT AUTO_SHIFT_TIMEOUT * 2
+#endif
+// clang-format on
 
 #define CAPS_LOCK_STATUS
 
@@ -37,7 +40,7 @@
 #define NAVIGATOR_SCROLL_INVERT_Y
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#define AUTO_MOUSE_DEFAULT_LAYER 3
+#define AUTO_MOUSE_DEFAULT_LAYER 4
 #define AUTO_MOUSE_THRESHOLD 15
 #define AUTO_MOUSE_TIME 150
 #define AUTO_MOUSE_TOGGLE_TIMEOUT 500

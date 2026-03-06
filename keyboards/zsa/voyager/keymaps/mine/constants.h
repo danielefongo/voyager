@@ -14,21 +14,21 @@ enum Layer {
     MAIN,
     SYMBOLS,
     NAVIGATION,
-    MOUSE,
     EXTRA,
+    MOUSE,
     LAYER_COUNT
 };
 
-#define KC_A_S LSFT_T(KC_A)
+#define KC_A_G LGUI_T(KC_A)
 #define KC_R_A LALT_T(KC_R)
-#define KC_S_G LGUI_T(KC_S)
+#define KC_S_S LSFT_T(KC_S)
 #define KC_T_C LCTL_T(KC_T)
 #define KC_N_C RCTL_T(KC_N)
-#define KC_E_G RGUI_T(KC_E)
+#define KC_E_S RSFT_T(KC_E)
 #define KC_I_A RALT_T(KC_I)
-#define KC_O_S RSFT_T(KC_O)
+#define KC_O_G RGUI_T(KC_O)
 
-#define KC_ESC_S LSFT_T(KC_ESC)
+#define KC_SPC_S LSFT_T(KC_SPC)
 
 #define RGB_VAD QK_UNDERGLOW_VALUE_DOWN
 #define RGB_VAU QK_UNDERGLOW_VALUE_UP
@@ -44,12 +44,12 @@ enum Layer {
 #define GREEN 94, 255, 225
 
 // clang-format off
-const char delays[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+const int delays[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
   LAYOUT(
-  T_6  , T_5  , T_4  , T_3  , T_2  , T_1  , T_1  , T_2  , T_3  , T_4  , T_5  , T_6  ,
-  T_6  , T_5  , T_4  , T_3  , T_2  , T_1  , T_1  , T_2  , T_3  , T_4  , T_5  , T_6  ,
-  T_6  , T_5  , T_4  , T_3  , T_2  , T_1  , T_1  , T_2  , T_3  , T_4  , T_5  , T_6  ,
-  T_6  , T_5  , T_4  , T_3  , T_2  , T_1  , T_1  , T_2  , T_3  , T_4  , T_5  , T_6  ,
-                              T_T2 , T_T1 , T_T1 , T_T2
+  0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    ,
+  0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    ,
+  0    , 40   , 40   , 40   , 40   , 0    , 0    , 40   , 40   , 40   , 40   , 0    ,
+  0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    , 0    ,
+                              150  , 100  , 100  , 150
 );
 // clang-format on
