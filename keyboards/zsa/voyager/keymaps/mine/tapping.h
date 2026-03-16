@@ -52,8 +52,10 @@ bool is_flow_tap_key(uint16_t keycode) {
     switch (keycode) {
         case KC_A_G:
         case KC_R_A:
+        case KC_S_S:
         case KC_T_C:
         case KC_N_C:
+        case KC_E_S:
         case KC_I_A:
         case KC_O_G:
             return true;
@@ -76,13 +78,6 @@ bool is_flow_tap_key(uint16_t keycode) {
 }
 
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
-    switch (keycode) {
-        case KC_S_S:
-        case KC_E_S:
-            return 0;
-        default:;
-    }
-
     if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
         uint8_t row = record->event.key.row;
         uint8_t col = record->event.key.col;
