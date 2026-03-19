@@ -10,7 +10,7 @@ flash: compile
   qmk flash -kb zsa/voyager -km mine;
 
 show: compile
-  firefox $PWD/misc/keyboard.png
+  xdg-open $PWD/misc/keyboard.png
 
 image-gen:
   qmk c2json $PWD/keyboards/zsa/voyager/keymaps/mine/keymap.c --no-cpp | keymap -c ./misc/config.yaml parse -c 10 -q - > /tmp/keymap.yaml
