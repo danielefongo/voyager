@@ -199,12 +199,15 @@ bool sequence_process_record(uint16_t keycode, keyrecord_t *record) {
         return true;
     }
 
+    bool is_tap_hold = (keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) ||
+                       (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX);
+    if (is_tap_hold && record->tap.count == 0) {
+        return true;
+    }
+
 #ifdef AUTO_SHIFT_ENABLE
     if (is_sequence_recording()) {
-        bool is_tap_hold = (keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) ||
-                           (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX);
         if (is_tap_hold) {
-            if (record->tap.count == 0) return true;
             if (get_auto_shifted_key(keycode & 0xFF, record)) return true;
         }
         if (get_auto_shifted_key(keycode, record)) return true;
