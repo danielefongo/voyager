@@ -59,11 +59,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MOUSE] = LAYOUT(
-      __ , __        , __      , __      , __         , __        ,     __ , __ , __ , __ , __ , __,
-      __ , KC_ESC    , QK_LLCK , MS_BTN4 , MS_BTN5    , __        ,     __ , __ , __ , __ , __ , __,
-      __ , NAV_AIM   , MS_BTN3 , MS_BTN2 , MS_BTN1    , __        ,     __ , __ , __ , __ , __ , __,
-      __ , NAV_TURBO , KC_LSFT , KC_LCTL , NAV_SCROLL , __        ,     __ , __ , __ , __ , __ , __,
-                                           __         , MO(MOUSE) ,     __ , __
+      __ , __        , __      , __      , __         , __       ,     __ , __ , __ , __ , __ , __,
+      __ , QK_LLCK   , KC_ESC  , MS_BTN4 , MS_BTN5    , __       ,     __ , __ , __ , __ , __ , __,
+      __ , NAV_TURBO , MS_BTN3 , MS_BTN2 , MS_BTN1    , __       ,     __ , __ , __ , __ , __ , __,
+      __ , KC_LALT   , KC_LSFT , KC_LCTL , NAV_SCROLL , __       ,     __ , __ , __ , __ , __ , __,
+                                           MO(MOUSE)  , NAV_EXIT ,     __ , __
 )
 };
 // clang-format on
@@ -88,7 +88,15 @@ bool is_mouse_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!layer_state_is(AUTO_MOUSE_TARGET_LAYER)) {
         return (IS_MOUSE_KEYCODE(keycode) && !record->event.pressed);
     }
-    return true;
+
+    switch (keycode) {
+        case MS_BTN1 ... MS_BTN8:
+        case KC_ESC:
+        case NAV_EXIT:
+            return false;
+        default:
+            return true;
+    }
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
@@ -131,6 +139,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case NAV_AIM:
             navigator_aim = record->event.pressed;
+            return false;
+
+        case NAV_EXIT:
             return false;
 
         case SEQ_SAVE:

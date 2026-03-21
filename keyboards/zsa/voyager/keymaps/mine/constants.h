@@ -6,6 +6,7 @@ enum custom_keycodes {
     NAV_SCROLL,
     NAV_TURBO,
     NAV_AIM,
+    NAV_EXIT,
     SEQ_SAVE,
     SEQ_LOAD,
 };

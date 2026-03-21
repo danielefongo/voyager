@@ -147,6 +147,7 @@ parse_config:
     NAV_SCROLL: '$$phosphor:bold/mouse-scroll$$'
     NAV_AIM: '$$phosphor:bold/crosshair$$'
     NAV_TURBO: '$$phosphor:bold/speedometer$$'
+    NAV_EXIT: '$$phosphor:bold/house$$'
     STN_N1: '#1'
     STN_N2: '#2'
     STN_N3: '#3'
