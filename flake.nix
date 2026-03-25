@@ -11,13 +11,13 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        zsaQmkRev = "2f7463bddd017600910958528a2632f26bd67a70";
+        zsaQmkRev = "f4a95d85c83c7d6be59098e6027d3778957c47bc";
 
         zsaQmkFW = pkgs.fetchFromGitHub {
           owner = "zsa";
           repo = "qmk_firmware";
           rev = zsaQmkRev;
-          sha256 = "sha256-JQ2A7UHvClZg2PhIbIxWMW8+3qWyPZpcNsCqSqkjY28=";
+          sha256 = "sha256-C9w+ef3FAFEMDUm5/AE4inHUFbYGZCZMo1FnF+3gX6w=";
           fetchSubmodules = true;
         };
 

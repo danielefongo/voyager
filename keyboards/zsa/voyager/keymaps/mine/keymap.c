@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+#include "automouse.h"
 #include "constants.h"
 #include "sequence_storage.h"
 #include "shift.h"
@@ -81,11 +82,11 @@ extern float scroll_accumulated_h;
 extern float scroll_accumulated_v;
 
 void pointing_device_init_user(void) {
-    set_auto_mouse_enable(true);
+    automouse_enable();
 }
 
 bool is_mouse_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!layer_state_is(AUTO_MOUSE_TARGET_LAYER)) {
+    if (!layer_state_is(AUTOMOUSE_LAYER)) {
         return (IS_MOUSE_KEYCODE(keycode) && !record->event.pressed);
     }
 

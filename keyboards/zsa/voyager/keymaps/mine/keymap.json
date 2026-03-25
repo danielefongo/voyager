@@ -1,5 +1,7 @@
 {
-    "modules": [
-        "zsa/defaults"
-    ]
+  "modules": [
+    "zsa/navigator_trackball",
+    "zsa/automouse",
+    "zsa/defaults"
+  ]
 }
