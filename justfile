@@ -18,3 +18,6 @@ image-gen:
   yq eval-all 'select(fileIndex == 0) * select(fileIndex == 1)' /tmp/keymap.yaml /tmp/combos.yaml > /tmp/keyboard.yaml
   keymap draw /tmp/keyboard.yaml > /tmp/keyboard.svg
   inkscape /tmp/keyboard.svg --export-type=png --export-filename=$PWD/misc/keyboard.png --export-dpi=300
+
+kanata layout="colemak-dh":
+  kanata-run {{layout}}

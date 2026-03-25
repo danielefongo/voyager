@@ -93,8 +93,32 @@
         };
 
         pythonEnv = pkgs.python3.withPackages (ps: qmkDeps ++ [ keymapDrawer ]);
+
+        kanataWrapper = pkgs.writeShellScriptBin "kanata-run" ''
+          LAYOUT="''${1:-colemak-dh}"
+          CONFIG_DIR="''${KANATA_CONFIG_DIR:-.}/kanata"
+          CONFIG="$CONFIG_DIR/$LAYOUT.kbd"
+
+          if [ ! -f "$CONFIG" ]; then
+            echo "error: layout '$LAYOUT' not found at $CONFIG"
+            echo "available layouts:"
+            for f in "$CONFIG_DIR"/*.kbd; do
+              [ -f "$f" ] && echo "  - $(basename "$f" .kbd)"
+            done
+            exit 1
+          fi
+
+          echo "starting kanata with layout: $LAYOUT"
+          echo "config: $CONFIG"
+          exec ${pkgs.kanata}/bin/kanata -c "$CONFIG"
+        '';
       in
       {
+        apps.kanata = {
+          type = "app";
+          program = "${kanataWrapper}/bin/kanata-run";
+        };
+
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             pythonEnv
@@ -110,11 +134,13 @@
             yq-go
             black
             clang-tools
+            kanataWrapper
           ];
           env = {
             QMK_HOME = "${patchedQmkFW zsaQmkFW}";
             PATH = "${pythonEnv}/bin:$PATH";
             SKIP_GIT = "1";
+            KANATA_CONFIG_DIR = ".";
           };
           shell = "${pkgs.zsh}/bin/zsh";
           shellHook = ''
