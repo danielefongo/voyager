@@ -60,11 +60,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [MOUSE] = LAYOUT(
-      __ , __        , __      , __      , __         , __       ,     __ , __ , __ , __ , __ , __,
-      __ , QK_LLCK   , KC_ESC  , MS_BTN4 , MS_BTN5    , __       ,     __ , __ , __ , __ , __ , __,
-      __ , NAV_TURBO , MS_BTN3 , MS_BTN2 , MS_BTN1    , __       ,     __ , __ , __ , __ , __ , __,
-      __ , KC_LALT   , KC_LSFT , KC_LCTL , NAV_SCROLL , __       ,     __ , __ , __ , __ , __ , __,
-                                           MO(MOUSE)  , NAV_EXIT ,     __ , __
+      __ , __      , __      , __      , __         , __       ,     __       , __ , __ , __ , __ , __,
+      __ , QK_LLCK , KC_ESC  , MS_BTN4 , MS_BTN5    , __       ,     __       , __ , __ , __ , __ , __,
+      __ , NAV_AIM , MS_BTN3 , MS_BTN2 , MS_BTN1    , __       ,     __       , __ , __ , __ , __ , __,
+      __ , KC_LALT , KC_LSFT , KC_LCTL , NAV_SCROLL , __       ,     __       , __ , __ , __ , __ , __,
+                                         MO(MOUSE)  , NAV_EXIT ,     NAV_EXIT , __
 )
 };
 // clang-format on

@@ -47,7 +47,7 @@ LEDMAP_START = {
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM,
       SYM, MOD, MOD, MOD, MOD, TXT, TXT, MOD, MOD, MOD, MOD, SYM,
       SYM, TXT, TXT, TXT, TXT, TXT, TXT, TXT, SYM, SYM, SYM, SYM,
-                          MOV, MOV, MOD, MOV
+                          MOV, MOD, MOV, MOV
   ),
   [SYMBOLS] = LEDS(
       ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
@@ -75,7 +75,7 @@ LEDMAP_START = {
       ___, MOV, SYM, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
       ___, NAV, NAV, NAV, NAV, ___, ___, ___, ___, ___, ___, ___,
       ___, MOD, MOD, MOD, NAV, ___, ___, ___, ___, ___, ___, ___,
-                          MOV, SYM, ___, ___
+                          MOV, MOV, MOV, ___
   )
 };
 // clang-format on
